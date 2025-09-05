@@ -13,19 +13,38 @@ bilgiSablonlari = [
     { anahtar: 'milliyet:Türkiye', sablon_soru: 'Bu oyuncu Türk mü?' },
     { anahtar: 'milliyet:Arjantin', sablon_soru: 'Bu oyuncu Arjantinli mi?' },
     { anahtar: 'milliyet:Portekiz', sablon_soru: 'Bu oyuncu Portekizli mi?' },
+    { anahtar: 'milliyet:Almanya', sablon_soru: 'Bu oyuncu  Alman mi?' },
+    { anahtar: 'milliyet:Nijerya', sablon_soru: 'Bu oyuncu Nijeryalı mı?' },
+    { anahtar: 'milliyet:Belçika', sablon_soru: 'Bu oyuncu Belçikalı mı?' },
+    { anahtar: 'milliyet:İngiltere', sablon_soru: 'Bu oyuncu İngiltereli mi?' },
+
+
     { anahtar: 'takim:Fenerbahçe', sablon_soru: 'Bu oyuncu Fenerbahçede oynadı mı?' },
+    { anahtar: 'takim:Galatasaray', sablon_soru: 'Bu oyuncu Galatasarayda oynadı mı?' },
+    { anahtar: 'takim:Barcelona', sablon_soru: 'Bu oyuncu Barcelonada oynadı mı?' },
     { anahtar: 'takim:Real Madrid', sablon_soru: 'Bu oyuncu Real Madrid takımında oynadı mı?' },
+    { anahtar: 'takim:Manchester United', sablon_soru: 'Bu oyuncu Manchester Unitedda oynadı mı?' },
+
+
+    { anahtar: 'takim:Real Madrid', sablon_soru: 'Bu oyuncu Real Madridde forma giydi mi?' },
     { anahtar: 'takim:Barcelona', sablon_soru: 'Bu oyuncu Barcelonada top koşturdu mu?' },
     { anahtar: 'takim:Barcelona', sablon_soru: 'Bu oyuncu Barcelonada forma giydi mi?' },
+
+
     { anahtar: 'takim:Manchester United', sablon_soru: 'Bu oyuncu Manchester United forması giydi mi?' },
     { anahtar: 'kupa:Şampiyonlar Ligi', sablon_soru: 'Bu oyuncu Şampiyonlar Ligi kazandı mı?' },
     { anahtar: 'kupa:La Liga', sablon_soru: 'Bu oyuncu İspanya La Liga kupasını kaldırdı mı?' },
     { anahtar: 'kupa:Premier Lig', sablon_soru: 'Bu oyuncu İngiltere Premier Ligi şampiyonu oldu mu?' },
     { anahtar: 'kupa:Avrupa Ligi', sablon_soru: 'Bu oyuncu Avrupa Ligi kazandı mı?' },
     { anahtar: 'durum:aktif', sablon_soru: 'Aktif bir futbolcu mu?'},
-    { anahtar: 'durum:degil', sablon_soru: 'Aktif bir futbolcu mu?'},
-    { anahtar: 'durum:aktif', sablon_soru: 'Hala oynuyor mu?'},
-    { anahtar: 'durum:degil', sablon_soru: 'Hala oynuyor mu?'}
+    { anahtar: 'durum:aktif', sablon_soru: 'Hala aktif futbol oynuyor mu?'},
+
+    { anahtar: 'mevki:kaleci', sablon_soru: 'Bu oyuncunun mevkisi kaleci mi?'},
+    { anahtar: 'mevki:defans', sablon_soru: 'Bu oyuncunun mevkisi defans mı? '},
+    { anahtar: 'mevki:orta saha', sablon_soru: 'Bu oyuncunun mevkisi orta saha mı?'},
+    { anahtar: 'mevki:forvet', sablon_soru: 'Bu oyuncunun mevkisi forvet mi?'},
+
+
 
 ];
 
@@ -83,9 +102,114 @@ async function oyunKur() {
 }
 
 
+oyunKur();
+
+async function soruyuAnalizEt(kullaniciSorusu) {
+  console.log(`Kullanıcının sorusu ${kullaniciSorusu}`)
+
+  const kullaniciVektoru = await model.embed([kullaniciSorusu]);
 
 
 
+  // cosinüs benzerliği
+  const normKullaniciVektoru = kullaniciVektoru.div(kullaniciVektoru.norm());
+  const normSablonVektorleri = sablonVektorleri.div(sablonVektorleri.norm(2, 1, true));
+
+  // Bu çarpım bize [1, 10] boyutunda bir tensör verir.
+  // İçindeki her bir değer, bir şablonla olan benzerlik skorudur.
+  const benzerlikSkorlari = tf.matMul(normKullaniciVektoru, normSablonVektorleri, false, true);
+
+  const enYuksekSkorIndex = benzerlikSkorlari.argMax(1);
+  const index = enYuksekSkorIndex.dataSync()[0]; // Index'i bir sayı olarak almak için
+
+  console.log("index " + index);
+
+
+  const eslesenSablon = bilgiSablonlari[index];
+  console.log(eslesenSablon["anahtar"])
+
+  const sablonAnahtar = eslesenSablon["anahtar"];
+  const veriTipi      = sablonAnahtar.split(":")[0]; // burada eşleşen şablon sorudaki anahtarın veri tipini aldık, yani takim veya kupa gibi  
+  const deger         = sablonAnahtar.split(":")[1]; // burada eşleşen şablon sorudaki anahtarın değerini aldik, yani veritipi takim ise deger Fenerbahçe olabilir.
+
+
+  switch (veriTipi) {
+    case "isim":
+      if (secilenFutbolcu.isim.toLowerCase() == deger.toLowerCase()) {
+        console.log("evet");
+      } else {
+        console.log("hayır");
+      }
+      break;
+
+    case "milliyet":
+      if (secilenFutbolcu.milliyet.toLowerCase() == deger.toLowerCase()) {
+        console.log("evet");
+      } else {
+        console.log("hayır");
+      }
+      break;    
+
+    case "durum":
+      if (secilenFutbolcu.durum.toLowerCase() == deger.toLowerCase()) {
+        console.log("Evet, aktif futbol hayatına devam ediyor.");
+      } else {
+        console.log("Hayır, artık aktif olarak oynamıyor.");
+      }
+      break;    
+
+    case "mevki":
+      if (secilenFutbolcu.mevki.toLowerCase() == deger.toLowerCase()) {
+        console.log("evet");
+      } else {
+        console.log("hayır");
+      }
+      break;  
+      
+    case "takim":
+
+        // Takım isimlerini içeren yeni bir dizi oluşturup hepsini küçük harfe çevir
+        const kucukHarfTakimlar = secilenFutbolcu.oynadigi_takimlar.map(takim => takim.toLowerCase());
+        if (kucukHarfTakimlar.includes(deger.toLowerCase())) {
+          console.log("evet");
+        } else {
+          console.log("hayır");
+        }
+      break;
+
+    case "kupa":
+
+        const kucukHarfKupalar = secilenFutbolcu.kazandigi_kupalar.map(kupa => kupa.toLowerCase());
+        if (kucukHarfKupalar.includes(deger.toLowerCase())) {
+          console.log("evet");
+        } else {
+          console.log("hayır");
+        }
+      break;
+
+      default:
+      break;
+  }
+
+
+
+
+
+}
+
+const soruInput = document.getElementById("soru-input");
+const sorButonu = document.getElementById("sor-butonu");
+
+sorButonu.addEventListener('click', () => {
+
+  const soru = soruInput.value; // value, bir <input> elemanının içindeki kullanıcı tarafından girilen metni almak için kullanılır. Bu satır, kullanıcının yazdığı soruyu alıp işlemek için bir değişkene atar.
+  if (soru) {
+    soruyuAnalizEt(soru);
+  }
+
+
+
+});
 
 
 

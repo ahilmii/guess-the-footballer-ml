@@ -4,6 +4,7 @@
     "isim": "Lionel Messi",
     "milliyet": "Arjantin",
     "mevki": "Forvet",
+    "durum": "Aktif",
     "oynadigi_takimlar": ["Barcelona", "Paris Saint-Germain", "Inter Miami"],
     "oynadigi_ligler":   ["La Liga", "Ligue 1", "MLS"], 
     "kazandigi_kupalar": ["La Liga", "Ligue 1", "Şampiyonlar Ligi", "Copa América", "Dünya Kupası"]
@@ -13,6 +14,7 @@
     "isim": "Arda Güler",
     "milliyet": "Türkiye",
     "mevki": "Orta Saha",
+    "durum": "Aktif",
     "oynadigi_takimlar": ["Fenerbahçe", "Real Madrid"],
     "oynadigi_ligler":   ["La Liga", "Süper Lig"], 
     "kazandigi_kupalar": ["Türkiye Kupası", "La Liga"]
@@ -22,6 +24,7 @@
     "isim": "Cristiano Ronaldo",
     "milliyet": "Portekiz",
     "mevki": "Forvet",
+    "durum": "Aktif",
     "oynadigi_takimlar": ["Sporting CP", "Manchester United", "Real Madrid", "Juventus", "Al Nassr"],
     "oynadigi_ligler":   ["La Liga", "Premier Lig", "Serie A", "Suudi Arabistan", "Portekiz Ligi"], 
     "kazandigi_kupalar": ["Premier Lig", "La Liga", "Serie A", "Şampiyonlar Ligi", "Euro"]
@@ -31,6 +34,7 @@
     "isim": "Mauro Icardi",
     "milliyet": "Arjantin",
     "mevki": "Forvet",
+    "durum": "Aktif",
     "oynadigi_takimlar": ["Sampdoria", "Inter Miami", "Paris Saint-Germain", "Galatasaray"],
     "oynadigi_ligler":   ["Serie B", "MLS", "Süper Lig", "Ligue 1"], 
     "kazandigi_kupalar": ["Süper Lig", "Ligue 1"]
@@ -38,8 +42,9 @@
   {
     "id": 5,
     "isim": "Victor Osimhen",
-    "milliyet": "Nİjerya",
+    "milliyet": "Nijerya",
     "mevki": "Forvet",
+    "durum": "Aktif",
     "oynadigi_takimlar": ["Napoli", "Galatasaray", "Lille", "Charleroi", "Wolfsburg"],
     "oynadigi_ligler":   ["Serie A", "Süper Lig", "Ligue 1", "Bundesliga"], 
     "kazandigi_kupalar": ["Süper Lig", "Serie A"]
@@ -49,6 +54,7 @@
     "isim": "İlkay Gündoğan",
     "milliyet": "Almanya",
     "mevki": "Orta Saha",
+    "durum": "Aktif",
     "oynadigi_takimlar": ["Galatasaray", "Manchester City", "Barcelona", "Dortmund", "Nürnberg"],
     "oynadigi_ligler":   ["La Liga", "Premier Lig", "Bundesliga", "Süper Lig"], 
     "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "Bundesliga", "Premier Lig"]
