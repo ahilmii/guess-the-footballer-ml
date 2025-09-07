@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="/style.css"> -->
+    <link rel="stylesheet" href="/style.css">
+
   </head>
   <body>
     <h1>Futbolcu Tahmin Oyunu</h1>
@@ -14,10 +15,70 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.11.0/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder@1.3.3/dist/universal-sentence-encoder.min.js"></script>
 
-    <div>Bir soru sorun:</div>
-    <input id="soru-input" type="text" placeholder="Sorunuzu buraya yazın">
-    <button id="sor-butonu">Gönder</button>
 
+
+    <div class="container">
+      <!-- chat box -->
+      <div class="chat-box">
+
+        <div class="footballer">
+          <img src="question-mark.jpg">
+          <div class="footballer-info">
+            <h2>Guess who i am</h2>
+            <p>online</p> <!-- burada şöyle bir senaryo geliştirebilirsin: henüz model yüklenmediğinde offline yazsın, model yükllendiğinde online yazsın  -->
+          </div>
+        </div>
+
+        <!-- main chat section  -->
+        <div id="chats" class="chats">
+          <div class="footballer-chat">Hi!</div>
+          <div class="my-chat">Hi!</div>
+          <div class="footballer-chat">Hoe can i !</div>
+          <div class="my-chat">Hi!</div>
+
+        </div>
+
+
+        <!-- input field section -->
+        <div class="chat-input">
+          <input type="text" id="soru-input" placeholder="Sorunuzu buraya yazın" />
+
+          <button class="send-btn" id="sor-butonu">
+            <img src="send.png" alt="send-btn">
+          </button>
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+
+
+<!-- 
+
+input alanını chat box a getir
+kullanıcı soru sorduğunda ve bilgisayar cevap verdiğinde chat box da görünmeli
+mesaj sayısı fazlallıştığında kaydırma çubuğu ekle
+
+
+ekstralar:
+model yüklenmeden önce offline yazsın, yüklendiğinde online olsun.
+sorulan soru sayısını tut. eğer soru sayısı 15 i geçerse pes mi devam mı diye sor.
+eğer kullanıcı futboolcuyu doğru tahmin ederse soru işareti yerine futbolcunun resmini ekle. ve ismini yazdır.
+
+
+-->
+
+
+
+
+    <!-- <script src="jquery-3.4.1.min.js"></script> -->
     <script type="module" src="/script.js"></script>
+
+
+
+
   </body>
 </html>

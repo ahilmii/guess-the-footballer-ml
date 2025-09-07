@@ -5,6 +5,8 @@ let secilenFutbolcu;
 let bilgiSablonlari;
 let sablonVektorleri; // şablon soruların hesaplanmış vektörlerini burada tutacağız. böylece her fonksiyondan erişebileceğiz ve her seferiende hesaplamak zorunda kalmayacağız.
 
+const chats = document.getElementById("chats");
+
 
 
 // Şablon Soruları ve Veri Anahtarlarını Oluşturma
@@ -149,16 +151,7 @@ async function soruyuAnalizEt(kullaniciSorusu) {
 
 
   // yanlış pozitif filtresii
-  if (veriTipi == "takim" || veriTipi == "kupa" || veriTipi == "mevki") {
-    const anahtarKelime = deger; // veriTipi:kupa ise deger:Şampiyonlar Ligi gibi
 
-    if (!kullaniciSorusu.toLowerCase().includes(anahtarKelime.toLowerCase())) {
-      console.log(`Yanlış pozitif tespit edildi. soru ${deger} kelimesini içermiyor`);
-      console.log("Üzgünüm, bu soruyu anlayamadım.");
-      return; // Fonksiyonu durdur    }
-    } 
-  
-  }
 
   /* bu filtreyi yaptık ancak şöyle bir problem var: bu oyuncu fenerhabçede oynadı mı? diye sorduğumda yazım hatasından dolayı bu filtreden geçemiyor. 
   ancak normalde sablonsoru ile doğru eşleştirmişti*/
@@ -225,23 +218,43 @@ async function soruyuAnalizEt(kullaniciSorusu) {
 
 
 
-
-
 }
+
+
+
 
 const soruInput = document.getElementById("soru-input");
 const sorButonu = document.getElementById("sor-butonu");
 
-sorButonu.addEventListener('click', () => {
 
-  const soru = soruInput.value; // value, bir <input> elemanının içindeki kullanıcı tarafından girilen metni almak için kullanılır. Bu satır, kullanıcının yazdığı soruyu alıp işlemek için bir değişkene atar.
-  if (soru) {
-    soruyuAnalizEt(soru);
+function soruSor() {
+
+  let div = document.createElement('div');
+  div.innerText = soruInput.value; 
+
+  if (soruInput.value) {
+    soruyuAnalizEt(soruInput.value);
   }
 
+  div.setAttribute('class', 'my-chat');
+  chats.appendChild(div);
+
+  soruInput.value = ''; // soruInput.innerText yazmıştım, ancak input için .innerText değil .value kullanılır
+  console.log("burası çalıştı")
+  /* 
+  bu fonksiyonu ilk kullandığımda şöyle bir hata yapmıştım:
+
+  let div ... -> div elemanı oluşturduktan sonra "div = soruInput.value" diyerek içerisine
+  bir string değer atadım. artık div DOM elemanı olma özelliğini kaybetti. dolasyısıyla
+  div.setAttribute('class', 'my-chat'); yazdığımda div.setAttribute is not a function
+  hatası aldım. çünkü div artık bir string, dom elemanı değil. yukarıda gördüğün kod düzeltilmiş halde.
+  */
 
 
-});
+}
+
+sorButonu.addEventListener('click', soruSor);
+
 
 
 
