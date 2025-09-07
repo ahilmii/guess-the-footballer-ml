@@ -10,22 +10,22 @@ let sablonVektorleri; // şablon soruların hesaplanmış vektörlerini burada t
 // Şablon Soruları ve Veri Anahtarlarını Oluşturma
 // Bu yapı, hangi sorunun hangi veriyi kontrol edeceğini belirler.
 bilgiSablonlari = [
-    { anahtar: 'milliyet:Türkiye', sablon_soru: 'Bu oyuncu Türk mü?' },
+    { anahtar: 'milliyet:Türk', sablon_soru: 'Bu oyuncu Türk mü?' },
     { anahtar: 'milliyet:Arjantin', sablon_soru: 'Bu oyuncu Arjantinli mi?' },
     { anahtar: 'milliyet:Portekiz', sablon_soru: 'Bu oyuncu Portekizli mi?' },
-    { anahtar: 'milliyet:Almanya', sablon_soru: 'Bu oyuncu  Alman mi?' },
+    { anahtar: 'milliyet:Alman', sablon_soru: 'Bu oyuncu Alman mı?' },
     { anahtar: 'milliyet:Nijerya', sablon_soru: 'Bu oyuncu Nijeryalı mı?' },
     { anahtar: 'milliyet:Belçika', sablon_soru: 'Bu oyuncu Belçikalı mı?' },
-    { anahtar: 'milliyet:İngiltere', sablon_soru: 'Bu oyuncu İngiltereli mi?' },
+    { anahtar: 'milliyet:İngiliz', sablon_soru: 'Bu oyuncu İngiltereli mi?' },
 
 
     { anahtar: 'takim:Fenerbahçe', sablon_soru: 'Bu oyuncu Fenerbahçede oynadı mı?' },
     { anahtar: 'takim:Galatasaray', sablon_soru: 'Bu oyuncu Galatasarayda oynadı mı?' },
     { anahtar: 'takim:Barcelona', sablon_soru: 'Bu oyuncu Barcelonada oynadı mı?' },
-    { anahtar: 'takim:Real Madrid', sablon_soru: 'Bu oyuncu Real Madrid takımında oynadı mı?' },
     { anahtar: 'takim:Manchester United', sablon_soru: 'Bu oyuncu Manchester Unitedda oynadı mı?' },
-
-
+    
+    { anahtar: 'takim:Real Madrid', sablon_soru: 'Bu oyuncu Madridde oynadı mı?' },
+    { anahtar: 'takim:Real Madrid', sablon_soru: 'Bu oyuncu Real Madridde oynadı mı?' },
     { anahtar: 'takim:Real Madrid', sablon_soru: 'Bu oyuncu Real Madridde forma giydi mi?' },
     { anahtar: 'takim:Barcelona', sablon_soru: 'Bu oyuncu Barcelonada top koşturdu mu?' },
     { anahtar: 'takim:Barcelona', sablon_soru: 'Bu oyuncu Barcelonada forma giydi mi?' },
@@ -82,6 +82,11 @@ async function oyunKur() {
     // Şablon Soruların Vektörlerini HESAPLA ve SAKLA
     console.log("Bilgi şablonlarının vektörleri hesaplanıyor...");
     const sablonCumleleri = bilgiSablonlari.map(s => s.sablon_soru);
+    
+    // for (let i = 0; i < bilgiSablonlari.length; i++) {
+    //     sablonCumleleri[i].toLowerCase();              
+    // }
+        
     sablonVektorleri = await model.embed(sablonCumleleri); // hesaplanan vektörleri global değişkene atadık
     console.log("Şablon vektörleri hafızaya alındı.");
 
@@ -119,18 +124,45 @@ async function soruyuAnalizEt(kullaniciSorusu) {
   // İçindeki her bir değer, bir şablonla olan benzerlik skorudur.
   const benzerlikSkorlari = tf.matMul(normKullaniciVektoru, normSablonVektorleri, false, true);
 
+  const enYuksekSkorTensor = benzerlikSkorlari.max(1);
   const enYuksekSkorIndex = benzerlikSkorlari.argMax(1);
+
+  const skor = enYuksekSkorTensor.dataSync()[0]; // en yüksek skorun tensör değerini al
   const index = enYuksekSkorIndex.dataSync()[0]; // Index'i bir sayı olarak almak için
 
+  const ESIK_DEGERİ = 0.82; 
+  console.log("skor" + skor)
   console.log("index " + index);
+
+  if (skor < ESIK_DEGERİ) {
+    console.log("Üzgünüm, bu soruyu anlayamadım veya bu konuda bir bilgim yok.");
+    // Fonksiyonun devam etmesini engelle
+    return; 
+  }
 
 
   const eslesenSablon = bilgiSablonlari[index];
   console.log(eslesenSablon["anahtar"])
 
-  const sablonAnahtar = eslesenSablon["anahtar"];
-  const veriTipi      = sablonAnahtar.split(":")[0]; // burada eşleşen şablon sorudaki anahtarın veri tipini aldık, yani takim veya kupa gibi  
-  const deger         = sablonAnahtar.split(":")[1]; // burada eşleşen şablon sorudaki anahtarın değerini aldik, yani veritipi takim ise deger Fenerbahçe olabilir.
+  const sablonAnahtar      = eslesenSablon["anahtar"];
+  const [veriTipi, deger]  = sablonAnahtar.split(":"); // : ile içeriği böldük, split iki elemanli bir dizi döndürür, ilki veriTipi'ne atanır, ikincisi deger'e atanır. 
+
+
+  // yanlış pozitif filtresii
+  if (veriTipi == "takim" || veriTipi == "kupa" || veriTipi == "mevki") {
+    const anahtarKelime = deger; // veriTipi:kupa ise deger:Şampiyonlar Ligi gibi
+
+    if (!kullaniciSorusu.toLowerCase().includes(anahtarKelime.toLowerCase())) {
+      console.log(`Yanlış pozitif tespit edildi. soru ${deger} kelimesini içermiyor`);
+      console.log("Üzgünüm, bu soruyu anlayamadım.");
+      return; // Fonksiyonu durdur    }
+    } 
+  
+  }
+
+  /* bu filtreyi yaptık ancak şöyle bir problem var: bu oyuncu fenerhabçede oynadı mı? diye sorduğumda yazım hatasından dolayı bu filtreden geçemiyor. 
+  ancak normalde sablonsoru ile doğru eşleştirmişti*/
+
 
 
   switch (veriTipi) {
@@ -213,9 +245,3 @@ sorButonu.addEventListener('click', () => {
 
 
 
-
-/*
-Universal Sentence Encoder (USE) modeli, embed fonksiyonuna genellikle string türünde bir cümle veya bir dizi cümle (string array) bekler. 
-Ancak, FUTBOLCU_LISTE muhtemelen bir JSON nesnesi veya nesne dizisi içeriyor. Bu nedenle, e.normalize hatası alıyorsunuz; çünkü normalize 
-metodu yalnızca string türünde çalışır. bu sebeple "map" kullanıp bir string dizisi oluşturup son haliyle embed metoduna verdik.
-*/
