@@ -25,16 +25,13 @@
           <img src="question-mark.jpg">
           <div class="footballer-info">
             <h2>Guess who i am</h2>
-            <p>online</p> <!-- burada şöyle bir senaryo geliştirebilirsin: henüz model yüklenmediğinde offline yazsın, model yükllendiğinde online yazsın  -->
+            <p id="status">offline</p> <!-- burada şöyle bir senaryo geliştirebilirsin: henüz model yüklenmediğinde offline yazsın, model yükllendiğinde online yazsın  -->
           </div>
         </div>
 
         <!-- main chat section  -->
         <div id="chats" class="chats">
-          <div class="footballer-chat">Hi!</div>
-          <div class="my-chat">Hi!</div>
-          <div class="footballer-chat">Hoe can i !</div>
-          <div class="my-chat">Hi!</div>
+
 
         </div>
 
@@ -58,27 +55,27 @@
 
 <!-- 
 
-input alanını chat box a getir
-kullanıcı soru sorduğunda ve bilgisayar cevap verdiğinde chat box da görünmeli
-mesaj sayısı fazlallıştığında kaydırma çubuğu ekle
+1) input alanını chat box a getir  -> durum: yapıldı +
+2) kullanıcı soru sorduğunda ve bilgisayar cevap verdiğinde chat box da görünmeli -> durum: yapıldı +
+3) mesaj sayısı fazlallıştığında kaydırma çubuğu ekle, çünkü mesajlar görünmüyooor  -> durum: yapılmadı. - şuanda çözmem gereken en önemli problemlerden biri
 
 
 ekstralar:
-model yüklenmeden önce offline yazsın, yüklendiğinde online olsun.
-sorulan soru sayısını tut. eğer soru sayısı 15 i geçerse pes mi devam mı diye sor.
-eğer kullanıcı futboolcuyu doğru tahmin ederse soru işareti yerine futbolcunun resmini ekle. ve ismini yazdır.
 
+1) model yüklenmeden önce offline yazsın, yüklendiğinde online olsun. 
+  ayrıca model yüklendiğinde futbolcu br mesaj göndersin: "hey benim kim oldığumu bulabilir misin?" -> durum: yapıldı +
+
+2) sorulan soru sayısını tut. -> durum: yapıldı +
+    a) kullanıcı boş soru gönderirse "Hey beni tanımak için soru sorman gerekiyor" şeklinde cevap yazdır -> durum: yapıldı +
+    b) eğer soru sayısı 15 i geçerse pes mi devam mı diye sor.
+
+3)eğer kullanıcı futboolcuyu doğru tahmin ederse soru işareti yerine futbolcunun resmini ekle. ve ismini yazdır.
 
 -->
 
 
-
-
     <!-- <script src="jquery-3.4.1.min.js"></script> -->
     <script type="module" src="/script.js"></script>
-
-
-
 
   </body>
 </html>

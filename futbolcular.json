@@ -12,7 +12,7 @@
   {
     "id": 2,
     "isim": "Arda Güler",
-    "milliyet": "Türkiye",
+    "milliyet": "Türk",
     "mevki": "Orta Saha",
     "durum": "Aktif",
     "oynadigi_takimlar": ["Fenerbahçe", "Real Madrid"],
@@ -52,7 +52,7 @@
   {
     "id": 6,
     "isim": "İlkay Gündoğan",
-    "milliyet": "Almanya",
+    "milliyet": "Alman",
     "mevki": "Orta Saha",
     "durum": "Aktif",
     "oynadigi_takimlar": ["Galatasaray", "Manchester City", "Barcelona", "Dortmund", "Nürnberg"],
