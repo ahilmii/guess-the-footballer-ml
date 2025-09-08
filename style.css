@@ -73,6 +73,8 @@ body {
     position: relative;
     font-size: 0.9em;
     color: #fff;
+    height: calc(450px - 80px - 65px);
+    overflow-y: auto;
 }
 
 .footballer-chat {

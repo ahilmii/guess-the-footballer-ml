@@ -9,6 +9,7 @@ let sorulanSoruSayisi = 0;
 
 const chats      = document.getElementById("chats");
 const userStatus = document.getElementById("status");
+const futbolcuIsimAlani = document.getElementById("futbolcu-isim-alani");
 
 
 // Şablon Soruları ve Veri Anahtarlarını Oluşturma
@@ -25,13 +26,13 @@ bilgiSablonlari = [
     { anahtar: 'takim:Fenerbahçe', sablon_soru: 'Fenerde oynadın mı?' },
     { anahtar: 'takim:Fenerbahçe', sablon_soru: 'Fenerbahçede oynadın mı?' },
     { anahtar: 'takim:Galatasaray', sablon_soru: 'Galatasarayda oynadın mı?' },
-    { anahtar: 'takim:Barcelona', sablon_soru: 'Barcelonada oynadın mı?' },
     
     { anahtar: 'takim:Real Madrid', sablon_soru: 'Madridde oynadın mı?' },
     { anahtar: 'takim:Real Madrid', sablon_soru: 'Real Madridde oynadın mı?' },
     { anahtar: 'takim:Real Madrid', sablon_soru: 'Real Madridde forma giydin mi?' },
-    { anahtar: 'takim:Barcelona', sablon_soru: 'Barcelonada top koşturdun mu?' },
     { anahtar: 'takim:Barcelona', sablon_soru: 'Barcelonada forma giydin mi?' },
+    { anahtar: 'takim:Barcelona', sablon_soru: 'Barçada oynadın mı?' },
+    { anahtar: 'takim:Barcelona', sablon_soru: 'Barcelonada oynadın mı?' },
 
 
     { anahtar: 'takim:Manchester United', sablon_soru: 'Manchester United forması giydin mi?' },
@@ -45,7 +46,15 @@ bilgiSablonlari = [
 
 
     { anahtar: 'takim:Paris Saint-Germain', sablon_soru: 'Pariste oynadın mı?' },
-    { anahtar: 'takim:Paris Saint-Germain', sablon_soru: 'PSG de oynadın mı?' },
+    { anahtar: 'takim:Paris Saint-Germain', sablon_soru: 'PSGde oynadın mı?' },
+
+
+    { anahtar: 'isim:Lionel Messi', sablon_soru: 'Sen Lionel Messi misin?' }, // 24
+    { anahtar: 'isim:Arda Güler', sablon_soru: 'Sen Arda Güler misin?' }, 
+    { anahtar: 'isim:Cristiano Ronaldo', sablon_soru: 'Sen Cristiano Ronaldo musun?' }, 
+    { anahtar: 'isim:Mauro Icardi', sablon_soru: 'Sen Mauro İcardi misin?' }, 
+    { anahtar: 'isim:Victor Osimhen', sablon_soru: 'Sen Victor Osimhen misin?' }, 
+    { anahtar: 'isim:İlkay Gündoğan', sablon_soru: 'Sen İlkay Gündoğan mısın?' }, 
 
 
     { anahtar: 'kupa:Şampiyonlar Ligi', sablon_soru: 'Şampiyonlar Ligi kazandın mı?' },
@@ -127,23 +136,30 @@ async function oyunKur() {
     let div = document.createElement("div");
     div.setAttribute('class', 'footballer-chat');
 
-    div.innerText = "Hey! Benim kim olduğumu bulabilir misin?"; // bu soruyu model yüklendikten hemen sonra mı yazdıralım yoksa şablon vektörleri hesaplandıktan sonra mı?
-    chats.appendChild(div);
-
-
-
     console.log("Model başarıyla yüklendi!");
+    futbolcuIsimAlani.innerText = "Guess who I am";
 
     // Şablon Soruların Vektörlerini HESAPLA ve SAKLA
     console.log("Bilgi şablonlarının vektörleri hesaplanıyor...");
-    const sablonCumleleri = bilgiSablonlari.map(s => s.sablon_soru);
-    
-    // for (let i = 0; i < bilgiSablonlari.length; i++) {
-    //     sablonCumleleri[i].toLowerCase();              
-    // }
-        
+    let sablonCumleleri = bilgiSablonlari.map(s => s.sablon_soru);
+
+    sablonCumleleri = sablonCumleleri.map(cumle => cumle.toLowerCase()); // toLowerCase() orijinal stringi değiştirmez, sadece yeni bir string döndürür.
+
+
     sablonVektorleri = await model.embed(sablonCumleleri); // hesaplanan vektörleri global değişkene atadık
     console.log("Şablon vektörleri hafızaya alındı.");
+
+
+    while(chats.hasChildNodes()) {
+      chats.removeChild(chats.firstChild);
+    }
+
+
+
+    div.innerText = "Hey! Benim kim olduğumu bulabilir misin?"; // bu soruyu model yüklendikten hemen sonra mı yazdıralım yoksa şablon vektörleri hesaplandıktan sonra mı?
+    chats.appendChild(div);
+    scrollToBottom();
+
 
     // rastgele bir futbolcu seç
     const rastgeleIndex = Math.floor(Math.random() * FUTBOLCU_LISTE.length);
@@ -164,8 +180,13 @@ async function oyunKur() {
 
 oyunKur();
 
+
+function scrollToBottom() {
+    chats.scrollTop = chats.scrollHeight; // scrollTop: Bir elementin dikey kaydırma çubuğunun en üstten ne kadar aşağıda olduğunu belirtir. bunu chat ekranın yüksekliğine eşitliyoruz.
+                                          // dolayısıyla her mesajdan sonra çubuk en aşağıya gider.
+}
+
 async function soruyuAnalizEt(kullaniciSorusu) {
-  console.log(`Kullanıcının sorusu ${kullaniciSorusu}`)
 
   const kullaniciVektoru = await model.embed([kullaniciSorusu]);
 
@@ -197,6 +218,7 @@ async function soruyuAnalizEt(kullaniciSorusu) {
   if (skor < ESIK_DEGERİ) {
     div.innerText = "Üzgünüm, bu soruyu anlayamadım veya bu konuda bir bilgim yok.";
     chats.appendChild(div);
+    scrollToBottom();
 
     console.log("Üzgünüm, bu soruyu anlayamadım veya bu konuda bir bilgim yok.");
     // Fonksiyonun devam etmesini engelle
@@ -214,10 +236,18 @@ async function soruyuAnalizEt(kullaniciSorusu) {
   switch (veriTipi) {
     case "isim":
       if (secilenFutbolcu.isim.toLowerCase() == deger.toLowerCase()) {
-        div.innerText = "evet";
-        console.log("evet");
+        div.innerText = `Tebrikler, doğru bildin! ben ${secilenFutbolcu.isim.toLowerCase()}! ${sorulanSoruSayisi} soruda bildin! 
+        ismini ve skorunu liderlik tablosuna eklemek ister misin?`;
+        
+        futbolcuIsimAlani.innerText = `${secilenFutbolcu.isim}`;
+        setTimeout(() => {
+          liderlikTablosunaEkle();
+        }, 0);
+        sorulanSoruSayisi = 0;
+
+        console.log("oyun bitti");
       } else {
-        div.innerText = "hayır";
+        div.innerText = `Hayır, ben ${deger.toLowerCase()} değilim, tekrar denemelisin :)`;
         console.log("hayır");
       }
       break;
@@ -282,6 +312,8 @@ async function soruyuAnalizEt(kullaniciSorusu) {
   }
 
   chats.appendChild(div);
+  scrollToBottom();
+
 
 }
 
@@ -295,6 +327,8 @@ const sorButonu = document.getElementById("sor-butonu");
 function soruSor() {
 
   let div = document.createElement('div');
+  let pesButon   = document.createElement("button");
+  let devamButon = document.createElement("button");
 
   if (soruInput.value) {
     soruyuAnalizEt(soruInput.value);
@@ -307,9 +341,43 @@ function soruSor() {
     div.setAttribute('class', 'footballer-chat');
   }
 
-  chats.appendChild(div);
+  if (sorulanSoruSayisi == 10 || sorulanSoruSayisi == 15 || sorulanSoruSayisi == 20) {
+    div.innerText = "Hey biraz zorlanıyor gibisin, Pes etmeye ne dersin :)";
+    div.setAttribute('class', 'footballer-chat');
 
+
+
+    devamButon.style.backgroundColor = "green";
+    devamButon.style.color = "white";
+    devamButon.style.padding = "6px";
+    devamButon.style.margin = "4px";
+    devamButon.style.marginLeft= "0px";
+    devamButon.style.borderRadius = "4px";
+    devamButon.style.cursor = "pointer";
+
+
+    pesButon.style.backgroundColor = "red";
+    pesButon.style.color = "white";
+    pesButon.style.padding = "6px";
+    pesButon.style.margin = "4px";
+    pesButon.style.borderRadius = "4px";
+    pesButon.style.cursor = "pointer";
+
+
+    devamButon.innerText = "DEVAM";
+    pesButon.innerText = "PES";
+
+  }
+
+  chats.appendChild(div);
+  chats.appendChild(devamButon);
+  chats.appendChild(pesButon);
+  scrollToBottom();
   soruInput.value = ''; // soruInput.innerText yazmıştım, ancak input için .innerText değil .value kullanılır
+  
+
+  
+
   console.log("soru sayısı" + sorulanSoruSayisi)
 
   /* 
@@ -318,14 +386,62 @@ function soruSor() {
   let div ... -> div elemanı oluşturduktan sonra "div = soruInput.value" diyerek içerisine
   bir string değer atadım. artık div DOM elemanı olma özelliğini kaybetti. dolasyısıyla
   div.setAttribute('class', 'my-chat'); yazdığımda div.setAttribute is not a function
-  hatası aldım. çünkü div artık bir string, dom elemanı değil. yukarıda gördüğün kod düzeltilmiş halde.
+  hatası aldım. çünkü div artık bir string, dom elemanı değil. innerText ile düzelttik.
   */
-
 
 }
 
 sorButonu.addEventListener('click', soruSor);
 
 
+
+function liderlikTablosunaEkle() {
+  let ekleButon  = document.createElement("button");
+  let hayırButon = document.createElement("button");
+
+
+  ekleButon.style.backgroundColor = "green";
+  ekleButon.style.color = "white";
+  ekleButon.style.padding = "6px";
+  ekleButon.style.margin = "4px";
+  ekleButon.style.marginLeft= "0px";
+  ekleButon.style.borderRadius = "4px";
+  ekleButon.style.cursor = "pointer";
+
+
+  hayırButon.style.backgroundColor = "red";
+  hayırButon.style.color = "white";
+  hayırButon.style.padding = "6px";
+  hayırButon.style.margin = "4px";
+  hayırButon.style.borderRadius = "4px";
+  hayırButon.style.cursor = "pointer";
+
+
+  ekleButon.innerText = "EKLE";
+  hayırButon.innerText = "HAYIR";
+
+  hayırButon.onclick = oyunBitir;
+ // eklebutonuna tıklandığında modal gelmeli. modalda bir input olacak, inputtan gelen bilgi tabloya yazdırılmalı. ekledikten sonra ekran temizlenmeli
+
+  chats.appendChild(ekleButon);
+  chats.appendChild(hayırButon);
+  scrollToBottom();
+
+}
+
+
+
+
+function oyunBitir() {
+  // burada bir oyunBitir fonksiyonu yaz. bunu birçok yerde kullanacağım. mesela kullanıcı pes derse. veya kullanıcı futbolcuyu bulduktan sonra 
+  // şöyle bir senaryo olacak: tebrikler zart zurt. adını liderlik tablosuna eklemek istersen kullanıcı adını 
+
+  while(chats.hasChildNodes()) {
+    chats.removeChild(chats.firstChild);
+  }
+
+  oyunKur(); // kullanıcı doğru bildi, oyun bitti mesajlar silindi. yeni oyun tekrar başlayaccak, yeni bir futbolcu seçilecek. 
+
+}
 
 
