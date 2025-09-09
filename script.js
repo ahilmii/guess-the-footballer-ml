@@ -357,7 +357,7 @@ async function soruSor() {
     pesMesaji.innerText = "Hey biraz zorlanıyor gibisin, Pes etmeye ne dersin :)";
     pesMesaji.setAttribute('class', 'footballer-chat');
 
-    let devamButon = butonOlustur("devam", "DEVAM", "green", () => {
+    let devamButon = butonOlustur("DEVAM", "green", () => {
       
       setTimeout(() => {
         devamButon.remove(); // gayet güzel çalışıyor.
@@ -369,7 +369,7 @@ async function soruSor() {
     });
 
 
-    let pesButon = butonOlustur("pes", "PES", "red", () => {
+    let pesButon = butonOlustur("PES", "red", () => {
 
       kalanSure.setAttribute('class', 'footballer-chat');
 
@@ -439,9 +439,7 @@ sorButonu.addEventListener('click', soruSor);
 
 function liderlikTablosunaEkle() {
   
-  let ekleButon  = butonOlustur("EKLE", "green", () => {
-    // burada bir modal açıp liderlik tablosuna ekleyeceksin
-  });
+  let ekleButon  = butonOlustur("EKLE", "green", modalGoster);
 
   let hayırButon = butonOlustur("HAYIR", "red", oyunBitir);
  // eklebutonuna tıklandığında modal gelmeli. modalda bir input olacak, inputtan gelen bilgi tabloya yazdırılmalı. ekledikten sonra ekran temizlenmeli
@@ -467,10 +465,8 @@ function oyunBitir() {
 
 
 
-function butonOlustur(id, icerik, renk, onClickHandler) {
+function butonOlustur(icerik, renk, onClickHandler) {
   let buton = document.createElement("button");
-
-  buton.id = id;
 
   buton.innerText = icerik;
   buton.style.backgroundColor = renk;
@@ -487,3 +483,57 @@ function butonOlustur(id, icerik, renk, onClickHandler) {
   return buton;
 
 }
+
+
+function modalKapat() {
+    const modalOverlay = document.querySelector('.modal-overlay');
+    if (modalOverlay) {
+        modalOverlay.style.opacity = '0'; // opacity: 0 → Element tamamen görünmez.
+        modalOverlay.querySelector('.modal-content').style.transform = 'translateY(-50px)'; //  Modal başlangıçta yukarıda (ekran dışında) konumlanır.
+        
+        setTimeout(() => {
+            modalOverlay.remove();
+        }, 300);
+    }
+}
+
+
+function modalGoster() {
+    const overlay = document.createElement('div');
+    overlay.className = 'modal-overlay';
+    
+    const modal = document.createElement('div');
+    modal.className = 'modal-content';
+
+    modal.innerHTML = `
+        <button class="modal-close-btn">&times;</button>
+        <h3>Harika Tahmin!</h3>
+        <p style="margin-bottom: 15px; color: #666;">Skorunu kaydetmek için adını yaz.</p>
+        <input type="text" id="kullanici-adi-input" placeholder="Kullanıcı adınız...">
+    `;
+
+    const gonderButon = butonOlustur("GÖNDER", "#77b3d4", () => {
+        const kullaniciAdi = document.getElementById('kullanici-adi-input').value;
+        console.log(`Liderlik tablosuna eklenecek isim: ${kullaniciAdi}`);
+        modalKapat();
+        oyunBitir(); 
+    });
+    modal.appendChild(gonderButon);
+
+    overlay.appendChild(modal);     // oluşturulan elemanları birbirine ve body'ye ekle
+    document.body.appendChild(overlay);
+
+    setTimeout(() => {  // yumuşak açılma efekti için stilleri ayarla
+        overlay.style.opacity = '1';
+        modal.style.transform = 'translateY(0)'; // translateY(0) : modal, ekranın ortasına taşınır.
+    }, 10);                                     // modal içeriğinin yukarıdan aşağıya doğru kayarak ekrana gelmesini sağlar.
+
+
+    overlay.querySelector('.modal-close-btn').onclick = modalKapat;     // kapatma olaylarını ekle
+    overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) {
+            modalKapat();
+        }
+    });
+}
+
