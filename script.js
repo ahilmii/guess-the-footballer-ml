@@ -86,7 +86,7 @@ bilgiSablonlari = [
 
 
     { anahtar: 'durum:aktif', sablon_soru: 'Aktif bir futbolcu musun?'},
-    { anahtar: 'durum:aktif', sablon_soru: 'Hala aktif futbol oynuyor musun?'},
+    { anahtar: 'durum:aktif', sablon_soru: 'Hala aktif futbol oynuyor musun?'}, // halen aktif olarak futbol oynuyor musun -> 0.86 aldım
     { anahtar: 'durum:aktif', sablon_soru: 'Hala oynuyor musun?'},
 
     { anahtar: 'mevki:kaleci', sablon_soru: 'kaleci misin?'},
@@ -324,60 +324,103 @@ const soruInput = document.getElementById("soru-input");
 const sorButonu = document.getElementById("sor-butonu");
 
 
-function soruSor() {
+async function soruSor() {
 
   let div = document.createElement('div');
-  let pesButon   = document.createElement("button");
-  let devamButon = document.createElement("button");
 
   if (soruInput.value) {
-    soruyuAnalizEt(soruInput.value);
     div.innerText = soruInput.value; 
     div.setAttribute('class', 'my-chat');
+    chats.appendChild(div);
+    scrollToBottom();    
+
     sorulanSoruSayisi++;
+    await soruyuAnalizEt(soruInput.value); // Soruyu işlemek için gönder ve tamamlanmasını bekle
 
   } else {
     div.innerText = "Hey, beni tanımak için soru sorman gerekiyor!"; 
     div.setAttribute('class', 'footballer-chat');
+
+    chats.appendChild(div);
+    scrollToBottom();
   }
 
-  if (sorulanSoruSayisi == 10 || sorulanSoruSayisi == 15 || sorulanSoruSayisi == 20) {
-    div.innerText = "Hey biraz zorlanıyor gibisin, Pes etmeye ne dersin :)";
-    div.setAttribute('class', 'footballer-chat');
 
 
 
-    devamButon.style.backgroundColor = "green";
-    devamButon.style.color = "white";
-    devamButon.style.padding = "6px";
-    devamButon.style.margin = "4px";
-    devamButon.style.marginLeft= "0px";
-    devamButon.style.borderRadius = "4px";
-    devamButon.style.cursor = "pointer";
+  if (sorulanSoruSayisi == 5 || sorulanSoruSayisi == 10 || sorulanSoruSayisi == 15 || sorulanSoruSayisi == 20) {
+    let pesMesaji = document.createElement('div');
+    let sonucMesaji = document.createElement('div');
+    let kalanSure = document.createElement("div");
 
 
-    pesButon.style.backgroundColor = "red";
-    pesButon.style.color = "white";
-    pesButon.style.padding = "6px";
-    pesButon.style.margin = "4px";
-    pesButon.style.borderRadius = "4px";
-    pesButon.style.cursor = "pointer";
+    pesMesaji.innerText = "Hey biraz zorlanıyor gibisin, Pes etmeye ne dersin :)";
+    pesMesaji.setAttribute('class', 'footballer-chat');
+
+    let devamButon = butonOlustur("devam", "DEVAM", "green", () => {
+      
+      setTimeout(() => {
+        devamButon.remove(); // gayet güzel çalışıyor.
+        pesButon.remove();
+
+      }, 500)
+      
+
+    });
 
 
-    devamButon.innerText = "DEVAM";
-    pesButon.innerText = "PES";
+    let pesButon = butonOlustur("pes", "PES", "red", () => {
+
+      kalanSure.setAttribute('class', 'footballer-chat');
+
+      let counter = 10;
+      let intervalId = setInterval(() => {
+        counter--;
+
+        if (counter > 0) {
+          kalanSure.textContent = `Yeni oyunun başlamasına ${counter} saniye kaldı, hazırlan!!`;
+        } else {
+          clearInterval(intervalId); // Zamanlayıcıyı durdur
+          kalanSure.textContent = "Oyun başladı!";
+        }
+      }, 1000); 
+
+      // while döngüsü, koşul sağlandığı sürece sürekli çalışır ve diğer işlemlerin (örneğin, DOM güncellemeleri veya kullanıcı etkileşimleri) 
+      // gerçekleşmesine izin vermez. Bu, tarayıcının yanıt vermemesine ve uygulamanın donmasına neden olur.
+
+      // setInterval asenkron bir yapıya sahiptir ve belirli aralıklarla bir işlem yapar. Bu sırada diğer işlemler de çalışmaya devam eder.
+
+
+      sonucMesaji.innerText = `ben ${secilenFutbolcu.isim.toLowerCase()}! Daha çok pratik yapmalısın.!`;
+      sonucMesaji.setAttribute('class', 'footballer-chat');
+      sorulanSoruSayisi = 0;
+
+      setTimeout(() => {
+        devamButon.remove(); // gayet güzel çalışıyor.
+        pesButon.remove();
+
+      }, 500);
+
+
+      setTimeout(() => {
+        oyunBitir();
+      }, 10000);
+
+      // setTimeout fonksiyonları birbirinden bağımsızdır. İlk setTimeout ve ikinci setTimeout aynı anda başlatılır, 
+      // ancak süreleri farklı olduğu için sırayla tamamlanır.  her biri kendi zamanlamasına göre çalışır.
+
+    });
+
+    chats.appendChild(pesMesaji);
+    chats.appendChild(sonucMesaji);
+    chats.appendChild(devamButon);
+    chats.appendChild(pesButon);
+    chats.appendChild(kalanSure);
+    scrollToBottom();
 
   }
 
-  chats.appendChild(div);
-  chats.appendChild(devamButon);
-  chats.appendChild(pesButon);
-  scrollToBottom();
   soruInput.value = ''; // soruInput.innerText yazmıştım, ancak input için .innerText değil .value kullanılır
-  
-
-  
-
   console.log("soru sayısı" + sorulanSoruSayisi)
 
   /* 
@@ -394,33 +437,13 @@ function soruSor() {
 sorButonu.addEventListener('click', soruSor);
 
 
-
 function liderlikTablosunaEkle() {
-  let ekleButon  = document.createElement("button");
-  let hayırButon = document.createElement("button");
+  
+  let ekleButon  = butonOlustur("EKLE", "green", () => {
+    // burada bir modal açıp liderlik tablosuna ekleyeceksin
+  });
 
-
-  ekleButon.style.backgroundColor = "green";
-  ekleButon.style.color = "white";
-  ekleButon.style.padding = "6px";
-  ekleButon.style.margin = "4px";
-  ekleButon.style.marginLeft= "0px";
-  ekleButon.style.borderRadius = "4px";
-  ekleButon.style.cursor = "pointer";
-
-
-  hayırButon.style.backgroundColor = "red";
-  hayırButon.style.color = "white";
-  hayırButon.style.padding = "6px";
-  hayırButon.style.margin = "4px";
-  hayırButon.style.borderRadius = "4px";
-  hayırButon.style.cursor = "pointer";
-
-
-  ekleButon.innerText = "EKLE";
-  hayırButon.innerText = "HAYIR";
-
-  hayırButon.onclick = oyunBitir;
+  let hayırButon = butonOlustur("HAYIR", "red", oyunBitir);
  // eklebutonuna tıklandığında modal gelmeli. modalda bir input olacak, inputtan gelen bilgi tabloya yazdırılmalı. ekledikten sonra ekran temizlenmeli
 
   chats.appendChild(ekleButon);
@@ -433,8 +456,6 @@ function liderlikTablosunaEkle() {
 
 
 function oyunBitir() {
-  // burada bir oyunBitir fonksiyonu yaz. bunu birçok yerde kullanacağım. mesela kullanıcı pes derse. veya kullanıcı futbolcuyu bulduktan sonra 
-  // şöyle bir senaryo olacak: tebrikler zart zurt. adını liderlik tablosuna eklemek istersen kullanıcı adını 
 
   while(chats.hasChildNodes()) {
     chats.removeChild(chats.firstChild);
@@ -445,3 +466,24 @@ function oyunBitir() {
 }
 
 
+
+function butonOlustur(id, icerik, renk, onClickHandler) {
+  let buton = document.createElement("button");
+
+  buton.id = id;
+
+  buton.innerText = icerik;
+  buton.style.backgroundColor = renk;
+  buton.style.color = "white";
+  buton.style.padding = "6px";
+  buton.style.margin = "4px";
+  buton.style.borderRadius = "4px";
+  buton.style.cursor = "pointer";
+
+  if (onClickHandler) {
+    buton.onclick = onClickHandler;
+  }
+
+  return buton;
+
+}
