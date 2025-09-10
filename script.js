@@ -241,9 +241,8 @@ async function soruyuAnalizEt(kullaniciSorusu) {
         
         futbolcuIsimAlani.innerText = `${secilenFutbolcu.isim}`;
         setTimeout(() => {
-          liderlikTablosunaEkle();
+          liderlikTablosunaEkle(sorulanSoruSayisi);
         }, 0);
-        sorulanSoruSayisi = 0;
 
         console.log("oyun bitti");
       } else {
@@ -437,16 +436,15 @@ async function soruSor() {
 sorButonu.addEventListener('click', soruSor);
 
 
-function liderlikTablosunaEkle() {
+function liderlikTablosunaEkle(skor) {
   
-  let ekleButon  = butonOlustur("EKLE", "green", modalGoster);
+    let ekleButon  =  butonOlustur("EKLE", "green", () => modalGoster(skor));
+    let hayırButon = butonOlustur("HAYIR", "red", oyunBitir);
+    // eklebutonuna tıklandığında modal gelmeli. modalda bir input olacak, inputtan gelen bilgi tabloya yazdırılmalı. ekledikten sonra ekran temizlenmeli
 
-  let hayırButon = butonOlustur("HAYIR", "red", oyunBitir);
- // eklebutonuna tıklandığında modal gelmeli. modalda bir input olacak, inputtan gelen bilgi tabloya yazdırılmalı. ekledikten sonra ekran temizlenmeli
-
-  chats.appendChild(ekleButon);
-  chats.appendChild(hayırButon);
-  scrollToBottom();
+    chats.appendChild(ekleButon);
+    chats.appendChild(hayırButon);
+    scrollToBottom();
 
 }
 
@@ -454,6 +452,8 @@ function liderlikTablosunaEkle() {
 
 
 function oyunBitir() {
+
+  sorulanSoruSayisi = 0;
 
   while(chats.hasChildNodes()) {
     chats.removeChild(chats.firstChild);
@@ -498,7 +498,7 @@ function modalKapat() {
 }
 
 
-function modalGoster() {
+function modalGoster(skor) {
     const overlay = document.createElement('div');
     overlay.className = 'modal-overlay';
     
@@ -514,7 +514,7 @@ function modalGoster() {
 
     const gonderButon = butonOlustur("GÖNDER", "#77b3d4", () => {
         const kullaniciAdi = document.getElementById('kullanici-adi-input').value;
-        console.log(`Liderlik tablosuna eklenecek isim: ${kullaniciAdi}`);
+        console.log(`Liderlik tablosuna eklenecek isim: ${kullaniciAdi} ve sorduğu soru sayısı ${skor}`);
         modalKapat();
         oyunBitir(); 
     });
