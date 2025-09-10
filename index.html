@@ -11,15 +11,15 @@
 
   </head>
   <body>
-    <!-- <p id="durum">Model ve kütüphaneler yükleniyor... Lütfen bekleyin.</p> -->
 
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.11.0/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder@1.3.3/dist/universal-sentence-encoder.min.js"></script>
+    
+    <h1>Futbolcu Tahmin Oyunu</h1>
 
 
 
     <div class="container">
-      <h1>Futbolcu Tahmin Oyunu</h1>
 
       <!-- chat box -->
       <div class="chat-box">
@@ -59,21 +59,8 @@
           </tr>          
         </thead>
 
-        <tbody>
-          <tr>
-            <td>ahilmi</td>
-            <td>1</td>
-          </tr>
+        <tbody id="liderlikTablosu">
 
-          <tr>
-            <td>ahilmi</td>
-            <td>1</td>
-          </tr>
-
-          <tr>
-            <td>ahilmi</td>
-            <td>1</td>
-          </tr>
         </tbody>
 
       </table>  
@@ -82,9 +69,7 @@
     </div>
 
 
-<!-- 
-3)eğer kullanıcı futboolcuyu doğru tahmin ederse soru işareti yerine futbolcunun resmini ekle. ve ismini yazdır.
--->
+
 
   <script type="module" src="/script.js"></script>
 
