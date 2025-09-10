@@ -10,9 +10,9 @@
 }
 
 
-
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -20,11 +20,19 @@ body {
 
 }
 
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color:#fff;
+}
+
 
 .container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
 }
 
 .chat-box {
@@ -204,10 +212,12 @@ body {
     color: #333;
 }
 
+/*tableeee */
 
 .content-table {
     border-collapse: collapse;
     margin: 25px;
+    margin-top: 0;
     font-size: 0.9em;
     min-width: 400px;
     border-radius: 5px 5px 0 0;
@@ -217,7 +227,7 @@ body {
 
 
 .content-table thead tr {
-    background-color: #009879;
+    background-color: #6c7ae0;
     color: #fff;
     text-align: left;
     font-weight: bold;
@@ -232,18 +242,20 @@ body {
     border-bottom: 1px solid #ddd;
 }
 
-.content-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+.content-table tbody tr {
+    background-color: #fff;
 }
 
-.content-table tbody tr:nth-of-type(odd) {
-    background-color: #ada6a6;
+.content-table tbody tr:hover {
+    background-color: #ececff;
 }
 
 .content-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #6c7ae0;
 }
 
+/* #ececff -> hover 
+bg clr #fff */
 
 
 
