@@ -6,9 +6,9 @@ let bilgiSablonlari;
 let sablonVektorleri; // şablon soruların hesaplanmış vektörlerini burada tutacağız. böylece her fonksiyondan erişebileceğiz ve her seferiende hesaplamak zorunda kalmayacağız.
 let sorulanSoruSayisi = 0;
 
-
-const chats      = document.getElementById("chats");
-const userStatus = document.getElementById("status");
+let   skorListesi = [];  
+const chats       = document.getElementById("chats");
+const userStatus  = document.getElementById("status");
 const futbolcuIsimAlani = document.getElementById("futbolcu-isim-alani");
 
 
@@ -123,7 +123,7 @@ async function fetchData() {
 
 
 async function oyunKur() {
-  durumParagrafi.innerText = "Veriler ve model yükleniyor...";
+  // durumParagrafi.innerText = "Veriler ve model yükleniyor...";
 
   await fetchData();
 
@@ -167,11 +167,11 @@ async function oyunKur() {
     console.log(`Bilgisayarın tuttuğu futbolcu: ${secilenFutbolcu.isim}`); 
 
 
-    durumParagrafi.innerText = "Model hazır sorunu sorabilirsin."
+    // durumParagrafi.innerText = "Model hazır sorunu sorabilirsin."
 
   } catch (error) {
     console.error("Model yüklenirken bir hata oluştu:", error);
-    durumParagrafi.innerText = "Hata: Model yüklenemedi. Konsolu kontrol edin.";
+    // durumParagrafi.innerText = "Hata: Model yüklenemedi. Konsolu kontrol edin.";
   }
 
 
@@ -515,6 +515,21 @@ function modalGoster(skor) {
     const gonderButon = butonOlustur("GÖNDER", "#77b3d4", () => {
         const kullaniciAdi = document.getElementById('kullanici-adi-input').value;
         console.log(`Liderlik tablosuna eklenecek isim: ${kullaniciAdi} ve sorduğu soru sayısı ${skor}`);
+        
+        skorListesi.push({username: `${kullaniciAdi}`, score: `${skor}`});
+        skorListesi.sort((a, b) => a.score - b.score);
+
+        const tbody = document.getElementById("liderlikTablosu");
+        tbody.innerHTML = "";
+
+        skorListesi.forEach(player => {
+          let row = document.createElement("tr");
+          row.innerHTML = `<td>${player.username}</td><td>${player.score}</td>`;
+          tbody.appendChild(row);
+        });
+
+        console.log(skorListesi)
+
         modalKapat();
         oyunBitir(); 
     });
