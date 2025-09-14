@@ -15,90 +15,191 @@ const futbolcuIsimAlani = document.getElementById("futbolcu-isim-alani");
 // Şablon Soruları ve Veri Anahtarlarını Oluşturma
 // Bu yapı, hangi sorunun hangi veriyi kontrol edeceğini belirler.
 bilgiSablonlari = [
-    { anahtar: 'milliyet:Türk', sablon_soru: 'Türk müsün?' },
-    { anahtar: 'milliyet:Arjantin', sablon_soru: 'Arjantinli misin?' },
-    { anahtar: 'milliyet:Portekiz', sablon_soru: 'Portekizli misin?' },
-    { anahtar: 'milliyet:Alman', sablon_soru: 'Alman mısın?' },
-    { anahtar: 'milliyet:Nijerya', sablon_soru: 'Nijeryalı mısın?' },
-    { anahtar: 'milliyet:Belçika', sablon_soru: 'Belçikalı mısın?' },
-    { anahtar: 'milliyet:İngiliz', sablon_soru: 'İngiliz misin?' },
+    { anahtar: 'milliyet:Türk', sablon_soru: 'Türk müsün' },
+    { anahtar: 'milliyet:Arjantin', sablon_soru: 'Arjantinli misin' },
+    { anahtar: 'milliyet:Portekiz', sablon_soru: 'Portekizli misin' },
+    { anahtar: 'milliyet:Alman', sablon_soru: 'Alman mısın' },
+    { anahtar: 'milliyet:Nijeryalı', sablon_soru: 'Nijeryalı mısın' },
+    { anahtar: 'milliyet:Belçikalı', sablon_soru: 'Belçikalı mısın' },
+    { anahtar: 'milliyet:İngiliz', sablon_soru: 'İngiliz misin' },
+    { anahtar: 'milliyet:Fransız', sablon_soru: 'Fransız mısın' },
+    { anahtar: 'milliyet:Hollandalı', sablon_soru: 'Hollandalı mısın' },
+    { anahtar: 'milliyet:İsviçreli', sablon_soru: 'İsviçreli mısın' },
+    { anahtar: 'milliyet:Faslı', sablon_soru: 'Faslı mısın' },
+    { anahtar: 'milliyet:Alman', sablon_soru: 'Alman mısın' },
+    { anahtar: 'milliyet:Hollandalı', sablon_soru: 'Hollandalı mısın' },
+    { anahtar: 'milliyet:İspanyol', sablon_soru: 'İspanyol musun' },
+    { anahtar: 'milliyet:İtalyan', sablon_soru: 'İtalyan mısın' },
+    { anahtar: 'milliyet:Polonyalı', sablon_soru: 'Polonyalı mısın' },
+    { anahtar: 'milliyet:Norveçli', sablon_soru: 'Norveçli misin' },
+    { anahtar: 'milliyet:Hırvat', sablon_soru: 'Hırvat mısın' },
 
-    { anahtar: 'takim:Fenerbahçe', sablon_soru: 'Fenerde oynadın mı?' },
-    { anahtar: 'takim:Fenerbahçe', sablon_soru: 'Fenerbahçede oynadın mı?' },
-    { anahtar: 'takim:Galatasaray', sablon_soru: 'Galatasarayda oynadın mı?' },
+
+    // serie a
+    { anahtar: 'takim:İnter', sablon_soru: 'İnterde oynadın mı' }, // 20
+    { anahtar: 'takim:AC Milan', sablon_soru: 'Milanda oynadın mı' },
+    { anahtar: 'takim:Napoli', sablon_soru: 'Napolide oynadın mı' },
+    { anahtar: 'takim:Roma', sablon_soru: 'Romada oynadın mı' },
+    { anahtar: 'takim:Juventus', sablon_soru: 'Juventusda oynadın mı' },
+    { anahtar: 'takim:Cagliari', sablon_soru: 'Cagliaride oynadın mı' },
+    { anahtar: 'takim:Sampdoria', sablon_soru: 'Sampdoriada oynadın mı' },
+
+    // bundesliga
+    { anahtar: 'takim:Bayer Leverkusen', sablon_soru: 'Bayer Leverkusende oynadın mı' },
+    { anahtar: 'takim:Werder Bremen', sablon_soru: 'Werder Bremende oynadın mı' },
+    { anahtar: 'takim:Wolfsburg', sablon_soru: 'Wolfsburgda oynadın mı' },
+    { anahtar: 'takim:Salzburg', sablon_soru: 'Salzburgda oynadın mı' },
+    { anahtar: 'takim:Bayern Münih', sablon_soru: 'Bayern Münihde oynadın mı' },
+    { anahtar: 'takim:Bayern Münih', sablon_soru: 'Bayernde oynadın mı' },
+    { anahtar: 'takim:Borussia Dortmund', sablon_soru: 'Borussia Dortmundda oynadın mı' },
+    { anahtar: 'takim:Borussia Dortmund', sablon_soru: 'Dortmundda oynadın mı' },
+    { anahtar: 'takim:Borussia Mönchengladbach', sablon_soru: 'Mönchengladbachda oynadın mı' },
+
     
-    { anahtar: 'takim:Real Madrid', sablon_soru: 'Madridde oynadın mı?' },
-    { anahtar: 'takim:Real Madrid', sablon_soru: 'Real Madridde oynadın mı?' },
-    { anahtar: 'takim:Real Madrid', sablon_soru: 'Real Madridde forma giydin mi?' },
-    { anahtar: 'takim:Barcelona', sablon_soru: 'Barcelonada forma giydin mi?' },
-    { anahtar: 'takim:Barcelona', sablon_soru: 'Barçada oynadın mı?' },
-    { anahtar: 'takim:Barcelona', sablon_soru: 'Barcelonada oynadın mı?' },
+    // çeşitli
+    { anahtar: 'takim:Dinamo Zagreb', sablon_soru: 'Dinamo Zagrebde oynadın mı' },
+    { anahtar: 'takim:Birmingham', sablon_soru: 'Birminghamda oynadın mı' },
+    { anahtar: 'takim:Moldede', sablon_soru: 'Moldede oynadın mı' },
+    { anahtar: 'takim:Lech Poznan', sablon_soru: 'Lech Poznanda oynadın mı' },
+    { anahtar: 'takim:Ajax', sablon_soru: 'Ajaxda oynadın mı' }, // 40
+    { anahtar: 'takim:Al Gharafa', sablon_soru: 'Al Gharafada oynadın mı' },
+    { anahtar: 'takim:Schalke', sablon_soru: 'Schalkede oynadın mı' },
+    { anahtar: 'takim:Genk', sablon_soru: 'Genkde oynadın mı' },
+    { anahtar: 'takim:Sporting', sablon_soru: 'Sportingde oynadın mı' },
+    { anahtar: 'takim:Al Nassr', sablon_soru: 'Al Nassrda oynadın mı' },
+    { anahtar: 'takim:Basel', sablon_soru: 'Baselde oynadın mı' },
 
 
-    { anahtar: 'takim:Manchester United', sablon_soru: 'Manchester United forması giydin mi?' },
-    { anahtar: 'takim:Manchester United', sablon_soru: 'Manchester Unitedda oynadın mı?' },
-    { anahtar: 'takim:Manchester United', sablon_soru: 'Unitedda oynadın mı?' },
-
-
-    { anahtar: 'takim:Manchester City', sablon_soru: 'Manchester City forması giydin mi?' },
-    { anahtar: 'takim:Manchester City', sablon_soru: 'Manchester Cityde oynadın mı?' },
-    { anahtar: 'takim:Manchester City', sablon_soru: 'Cityde oynadın mı?' },
-
-
-    { anahtar: 'takim:Paris Saint-Germain', sablon_soru: 'Pariste oynadın mı?' },
-    { anahtar: 'takim:Paris Saint-Germain', sablon_soru: 'PSGde oynadın mı?' },
-
-
-    { anahtar: 'isim:Lionel Messi', sablon_soru: 'Sen Lionel Messi misin?' }, // 24
-    { anahtar: 'isim:Arda Güler', sablon_soru: 'Sen Arda Güler misin?' }, 
-    { anahtar: 'isim:Cristiano Ronaldo', sablon_soru: 'Sen Cristiano Ronaldo musun?' }, 
-    { anahtar: 'isim:Mauro Icardi', sablon_soru: 'Sen Mauro İcardi misin?' }, 
-    { anahtar: 'isim:Victor Osimhen', sablon_soru: 'Sen Victor Osimhen misin?' }, 
-    { anahtar: 'isim:İlkay Gündoğan', sablon_soru: 'Sen İlkay Gündoğan mısın?' }, 
-
-
-    { anahtar: 'kupa:Şampiyonlar Ligi', sablon_soru: 'Şampiyonlar Ligi kazandın mı?' },
-    { anahtar: 'kupa:Şampiyonlar Ligi', sablon_soru: 'Şampiyonlar Ligi şampiyonu oldun mu?' },
-    { anahtar: 'kupa:Avrupa Ligi', sablon_soru: 'Avrupa Ligi kazandın mı?' },
-    { anahtar: 'kupa:Avrupa Ligi', sablon_soru: 'Avrupa Ligi şampiyonu oldun mu?' },
-
-
-    { anahtar: 'kupa:La Liga', sablon_soru: 'La Liga kupasını kazandın mı?' },
-    { anahtar: 'kupa:La Liga', sablon_soru: 'La Liga şampiyonu oldun mu?' },
+    // süper lig
+    { anahtar: 'takim:Fenerbahçe', sablon_soru: 'Fenerde oynadın mı' },
+    { anahtar: 'takim:Fenerbahçe', sablon_soru: 'Fenerbahçede oynadın mı' },
+    { anahtar: 'takim:Galatasaray', sablon_soru: 'Galatasarayda oynadın mı' },
     
-    { anahtar: 'kupa:Premier Lig', sablon_soru: 'Premier Ligi kupası kazandın mı?' },
-    { anahtar: 'kupa:Premier Lig', sablon_soru: 'Premier Ligi şampiyonu oldun mu?' },
+    // la liga
+    { anahtar: 'takim:Real Madrid', sablon_soru: 'Realde oynadın mı' },
+    { anahtar: 'takim:Real Madrid', sablon_soru: 'Real Madridde oynadın mı' },
+    { anahtar: 'takim:Real Madrid', sablon_soru: 'Real Madridde forma giydin mi' },
+    { anahtar: 'takim:Barcelona', sablon_soru: 'Barcelonada forma giydin mi' },
+    { anahtar: 'takim:Barcelona', sablon_soru: 'Barçada oynadın mı' },
+    { anahtar: 'takim:Barcelona', sablon_soru: 'Barcelonada oynadın mı' },
+    { anahtar: 'takim:Villarreal', sablon_soru: 'Villarrealde oynadın mı' },
+    { anahtar: 'takim:Atletico Madrid', sablon_soru: 'Atletico Madridde oynadın mı' },
+    { anahtar: 'takim:Atletico Madrid', sablon_soru: 'Atleticoda oynadın mı' },
 
-    { anahtar: 'kupa:Ligue 1', sablon_soru: 'Ligue 1 kupasını kazandın mı?' },
-    { anahtar: 'kupa:Ligue 1', sablon_soru: 'Ligue 1 şampiyonu oldun mu?' },
+    // premier lig
+    { anahtar: 'takim:Manchester United', sablon_soru: 'Manchester United forması giydin mi' },
+    { anahtar: 'takim:Manchester United', sablon_soru: 'Manchester Unitedda oynadın mı' },
+    { anahtar: 'takim:Manchester United', sablon_soru: 'Unitedda oynadın mı' },
+    { anahtar: 'takim:Manchester City', sablon_soru: 'Manchester City forması giydin mi' },
+    { anahtar: 'takim:Manchester City', sablon_soru: 'Manchester Cityde oynadın mı' },
+    { anahtar: 'takim:Manchester City', sablon_soru: 'Cityde oynadın mı' },
+    { anahtar: 'takim:Chelsea', sablon_soru: 'Chelseade oynadın mı' },
+    { anahtar: 'takim:Liverpool', sablon_soru: 'Liverpoolda oynadın mı' },
+    { anahtar: 'takim:Southampton', sablon_soru: 'Southamptonda oynadın mı' },
+    { anahtar: 'takim:Celtic', sablon_soru: 'Celticde oynadın mı' },
+    { anahtar: 'takim:Tottenham', sablon_soru: 'Tottenhamda oynadın mı' },
+    { anahtar: 'takim:West Ham United', sablon_soru: 'West Ham Unitedda oynadın mı' },
+    { anahtar: 'takim:Arsenal', sablon_soru: 'Arsenalda oynadın mı' },
 
-    { anahtar: 'kupa:Süper Lig', sablon_soru: 'Süper Lig kupasını kazandın mı?' },
-    { anahtar: 'kupa:Süper Lig', sablon_soru: 'Süper Lig şampiyonu oldun mu?' },
-
-    { anahtar: 'kupa:Serie A', sablon_soru: 'Serie A kupasını kazandın mı?' },
-    { anahtar: 'kupa:Serie A', sablon_soru: 'Serie A şampiyonu oldun mu?' },
-
-    { anahtar: 'kupa:Bundesliga', sablon_soru: 'Bundesliga kupasını kazandın mı?' },
-    { anahtar: 'kupa:Bundesliga', sablon_soru: 'Bundesliga şampiyonu oldun mu?' },
-
-    { anahtar: 'kupa:Dünya Kupası', sablon_soru: 'Dünya kupasını kazandın mı?' },
+    // ligue 1
+    { anahtar: 'takim:Paris Saint-Germain', sablon_soru: 'Pariste oynadın mı' },
+    { anahtar: 'takim:Paris Saint-Germain', sablon_soru: 'PSGde oynadın mı' },
+    { anahtar: 'takim:Monaco', sablon_soru: 'Monacoda oynadın mı' },
+    { anahtar: 'takim:Lille', sablon_soru: 'Lillede oynadın mı' },
+    { anahtar: 'takim:Nice', sablon_soru: 'Niceda oynadın mı' },
 
 
+    { anahtar: 'isim:Lionel Messi', sablon_soru: 'Sen Lionel Messi misin' }, // 24
+    { anahtar: 'isim:Arda Güler', sablon_soru: 'Sen Arda Güler misin' }, 
+    { anahtar: 'isim:Cristiano Ronaldo', sablon_soru: 'Sen Cristiano Ronaldo musun' }, 
+    { anahtar: 'isim:Mauro Icardi', sablon_soru: 'Sen Mauro İcardi misin' }, 
+    { anahtar: 'isim:Victor Osimhen', sablon_soru: 'Sen Victor Osimhen misin' }, 
+    { anahtar: 'isim:İlkay Gündoğan', sablon_soru: 'Sen İlkay Gündoğan mısın' }, 
+    { anahtar: 'isim:Hakan Çalhanoğlu', sablon_soru: 'Sen Hakan Çalhanoğlu musun' }, 
+    { anahtar: 'isim:Kylian Mbappe', sablon_soru: 'Sen Kylian Mbappe misin' }, 
+    { anahtar: 'isim:Kevin De Bruyne', sablon_soru: 'Sen Kevin De Bruyne misin' }, 
+    { anahtar: 'isim:Virgil van Dijk', sablon_soru: 'Sen Virgil van Dijk mısın' }, 
+    { anahtar: 'isim:Gianluigi Donnarumma', sablon_soru: 'Sen Gianluigi Donnarumma mısın' }, 
+    { anahtar: 'isim:Pedri', sablon_soru: 'Sen Pedri misin' }, 
+    { anahtar: 'isim:Harry Kane', sablon_soru: 'Sen Harry Kane misin' }, 
+    { anahtar: 'isim:Thomas Müller', sablon_soru: 'Sen Thomas Müller misin' }, 
+    { anahtar: 'isim:Luka Modric', sablon_soru: 'Sen Luka Modric misin' }, 
+    { anahtar: 'isim:Francesco Totti', sablon_soru: 'Sen Francesco Totti misin' }, 
+    { anahtar: 'isim:Phil Foden', sablon_soru: 'Sen Phil Foden mısın' }, 
+    { anahtar: 'isim:Kenan Yıldız', sablon_soru: 'Sen Kenan Yıldız mısın' }, 
+    { anahtar: 'isim:Jude Bellingham', sablon_soru: 'Sen Jude Bellingham mısın' }, 
+    { anahtar: 'isim:Nicolo Barella', sablon_soru: 'Sen Nicolo Barella mısın' }, 
+    { anahtar: 'isim:Erling Haaland', sablon_soru: 'Sen Erling Haaland mısın' }, 
+    { anahtar: 'isim:Robert Lewandowski', sablon_soru: 'Sen Robert Lewandowski misin' }, 
+    { anahtar: 'isim:Declan Rice', sablon_soru: 'Sen Declan Rice mısın' }, 
+    { anahtar: 'isim:Frank Lampard', sablon_soru: 'Sen Frank Lampard mısın' }, 
+    { anahtar: 'isim:Rodri', sablon_soru: 'Sen Rodri misin' }, 
+    { anahtar: 'isim:Toni Kroos', sablon_soru: 'Sen Toni Kroos musun' }, 
+    { anahtar: 'isim:Victor Osimhen', sablon_soru: 'Sen Victor Osimhen misin' }, 
+    { anahtar: 'isim:Wesley Sneijder', sablon_soru: 'Sen Wesley Sneijder misin' }, 
+    { anahtar: 'isim:Leroy Sane', sablon_soru: 'Sen Leroy Sane misin' }, 
+    { anahtar: 'isim:Achraf Hakimi', sablon_soru: 'Sen Achraf Hakimi misin' }, 
+    { anahtar: 'isim:Thibaut Courtois', sablon_soru: 'Sen Thibaut Courtois mısın' }, 
+    { anahtar: 'isim:Yann Sommer', sablon_soru: 'Sen Yann Sommer misin' }, 
 
-    { anahtar: 'durum:aktif', sablon_soru: 'Aktif bir futbolcu musun?'},
-    { anahtar: 'durum:aktif', sablon_soru: 'Hala aktif futbol oynuyor musun?'}, // halen aktif olarak futbol oynuyor musun -> 0.86 aldım
-    { anahtar: 'durum:aktif', sablon_soru: 'Hala oynuyor musun?'},
 
-    { anahtar: 'mevki:kaleci', sablon_soru: 'kaleci misin?'},
-    { anahtar: 'mevki:defans', sablon_soru: 'defans mısın? '},
-    { anahtar: 'mevki:orta saha', sablon_soru: 'orta saha mısın?'},
-    { anahtar: 'mevki:forvet', sablon_soru: 'forvet misin?'},
+    { anahtar: 'kupa:Şampiyonlar Ligi', sablon_soru: 'Şampiyonlar Ligi kazandın mı' },
+    { anahtar: 'kupa:Şampiyonlar Ligi', sablon_soru: 'Şampiyonlar Ligi şampiyonu oldun mu' },
+    { anahtar: 'kupa:UEFA Avrupa Ligi', sablon_soru: 'Avrupa Ligi kazandın mı' },
+    { anahtar: 'kupa:UEFA Avrupa Ligi', sablon_soru: 'Avrupa Ligi şampiyonu oldun mu' },
+    { anahtar: 'kupa:UEFA Süper Kupa', sablon_soru: 'Süper kupa kazandın mı' }, // 113
+    { anahtar: 'kupa:Konferans Ligi', sablon_soru: 'Konferans Ligi kazandın mı' },
 
-    { anahtar: 'mevki:kaleci', sablon_soru: 'kalede mi oynuyorsun?'},
-    { anahtar: 'mevki:defans', sablon_soru: 'defansta mı oynuyorsun? '},
-    { anahtar: 'mevki:orta saha', sablon_soru: 'orta sahada mı oynuyorsun?'},
-    { anahtar: 'mevki:forvet', sablon_soru: 'forvette mi oynuyorsun?'},
+    { anahtar: 'kupa:Avrupa Şampiyonası', sablon_soru: 'EURO kazandın mı' },
+    { anahtar: 'kupa:Ballon dor', sablon_soru: 'Ballon dor kazandın mı' },
 
+
+    { anahtar: 'kupa:La Liga', sablon_soru: 'La Liga kupasını kazandın mı' },
+    { anahtar: 'kupa:La Liga', sablon_soru: 'La Liga şampiyonu oldun mu' },
+    
+    { anahtar: 'kupa:Premier Lig', sablon_soru: 'Premier Ligi kupası kazandın mı' },
+    { anahtar: 'kupa:Premier Lig', sablon_soru: 'Premier Ligi şampiyonu oldun mu' },
+
+    { anahtar: 'kupa:Ligue 1', sablon_soru: 'Ligue 1 kupasını kazandın mı' },
+    { anahtar: 'kupa:Ligue 1', sablon_soru: 'Ligue 1 şampiyonu oldun mu' },
+
+    { anahtar: 'kupa:Süper Lig', sablon_soru: 'Süper Lig kupasını kazandın mı' },
+    { anahtar: 'kupa:Süper Lig', sablon_soru: 'Süper Lig şampiyonu oldun mu' },
+
+    { anahtar: 'kupa:Serie A', sablon_soru: 'Serie A kupasını kazandın mı' },
+    { anahtar: 'kupa:Serie A', sablon_soru: 'Serie A şampiyonu oldun mu' },
+
+    { anahtar: 'kupa:Polonya Kupası', sablon_soru: 'Polonya Kupası kazandın mı' },
+
+    { anahtar: 'kupa:Bundesliga', sablon_soru: 'Bundesliga kupasını kazandın mı' },
+    { anahtar: 'kupa:Bundesliga', sablon_soru: 'Bundesliga şampiyonu oldun mu' },
+
+    { anahtar: 'kupa:Dünya Kupası', sablon_soru: 'Dünya kupasını kazandın mı' },
+
+
+    // ligler
+    { anahtar: 'lig:Premier Lig', sablon_soru: 'Premier Ligde oynadın mı' },
+    { anahtar: 'lig:Süper Lig', sablon_soru: 'Süper Ligde oynadın mı' },
+    { anahtar: 'lig:Serie A', sablon_soru: 'Serie A da oynadın mı' },
+    { anahtar: 'lig:Ligue 1', sablon_soru: 'Ligue 1de oynadın mı' },
+    { anahtar: 'lig:Bundesliga', sablon_soru: 'Bundesligada oynadın mı' },
+    { anahtar: 'lig:La Liga', sablon_soru: 'La Ligada oynadın mı' }, // 134
+
+
+
+    { anahtar: 'durum:aktif', sablon_soru: 'Aktif bir futbolcu musun'},
+    { anahtar: 'durum:aktif', sablon_soru: 'Hala aktif futbol oynuyor musun'}, // halen aktif olarak futbol oynuyor musun -> 0.86 aldım
+    { anahtar: 'durum:aktif', sablon_soru: 'Hala oynuyor musun'},
+
+    { anahtar: 'mevki:kaleci', sablon_soru: 'kaleci misin'},
+    { anahtar: 'mevki:defans', sablon_soru: 'defans mısın '},
+    { anahtar: 'mevki:orta saha', sablon_soru: 'orta saha mısın'},
+    { anahtar: 'mevki:forvet', sablon_soru: 'forvet misin'},
+
+    { anahtar: 'mevki:kaleci', sablon_soru: 'kalede mi oynuyorsun'},
+    { anahtar: 'mevki:defans', sablon_soru: 'defansta mı oynuyorsun '},
+    { anahtar: 'mevki:orta saha', sablon_soru: 'orta sahada mı oynuyorsun'},
+    { anahtar: 'mevki:forvet', sablon_soru: 'forvette mi oynuyorsun'},
 ];
 
 // ekleyebileceğim sorular: 5 büyük lig de oynadı mı?
@@ -106,7 +207,7 @@ bilgiSablonlari = [
 
 async function fetchData() {
   try {
-    const response = await fetch("./futbolcular.json");
+    const response = await fetch("./futbolcular-guncellenmis.json");
     if (!response.ok) {
       throw new Error("JSON dosyası yüklenemedi");
     }
@@ -120,6 +221,13 @@ async function fetchData() {
 }
 
 
+function cevapVer(mesaj) {
+  let div = document.createElement("div");
+  div.setAttribute('class', 'footballer-chat');
+  div.innerText = mesaj;
+  chats.appendChild(div);
+  scrollToBottom();
+}
 
 
 async function oyunKur() {
@@ -129,19 +237,20 @@ async function oyunKur() {
 
   try {
     
+    cevapVer("Bir dakika bekle, hazırlanmam lazım!");
     console.log("Model yüklemesi başlatılıyor...");
     model = await use.load();
-    userStatus.innerText = "online"; 
 
-    let div = document.createElement("div");
-    div.setAttribute('class', 'footballer-chat');
+    // let div = document.createElement("div");
+    // div.setAttribute('class', 'footballer-chat');
 
     console.log("Model başarıyla yüklendi!");
-    futbolcuIsimAlani.innerText = "Guess who I am";
 
     // Şablon Soruların Vektörlerini HESAPLA ve SAKLA
     console.log("Bilgi şablonlarının vektörleri hesaplanıyor...");
     let sablonCumleleri = bilgiSablonlari.map(s => s.sablon_soru);
+    futbolcuIsimAlani.innerText = "Guess who I am";
+    userStatus.innerText = "online"; 
 
     sablonCumleleri = sablonCumleleri.map(cumle => cumle.toLowerCase()); // toLowerCase() orijinal stringi değiştirmez, sadece yeni bir string döndürür.
 
@@ -155,10 +264,10 @@ async function oyunKur() {
     }
 
 
-
-    div.innerText = "Hey! Benim kim olduğumu bulabilir misin?"; // bu soruyu model yüklendikten hemen sonra mı yazdıralım yoksa şablon vektörleri hesaplandıktan sonra mı?
-    chats.appendChild(div);
-    scrollToBottom();
+    cevapVer("Hey! Benim kim olduğumu bulabilir misin?");
+    // div.innerText = "Hey! Benim kim olduğumu bulabilir misin?"; // bu soruyu model yüklendikten hemen sonra mı yazdıralım yoksa şablon vektörleri hesaplandıktan sonra mı?
+    // chats.appendChild(div);
+    // scrollToBottom();
 
 
     // rastgele bir futbolcu seç
@@ -188,7 +297,8 @@ function scrollToBottom() {
 
 async function soruyuAnalizEt(kullaniciSorusu) {
 
-  const kullaniciVektoru = await model.embed([kullaniciSorusu]);
+  const kucukHarfSoru = kullaniciSorusu.toLowerCase();
+  const kullaniciVektoru = await model.embed([kucukHarfSoru]);
 
 
 
@@ -211,17 +321,10 @@ async function soruyuAnalizEt(kullaniciSorusu) {
   console.log("index " + index);
 
 
-  let div = document.createElement('div');
-  div.setAttribute('class', 'footballer-chat');
-
 
   if (skor < ESIK_DEGERİ) {
-    div.innerText = "Üzgünüm, bu soruyu anlayamadım veya bu konuda bir bilgim yok.";
-    chats.appendChild(div);
-    scrollToBottom();
-
+    cevapVer("Üzgünüm, bu soruyu anlayamadım veya bu konuda bir bilgim yok.")
     console.log("Üzgünüm, bu soruyu anlayamadım veya bu konuda bir bilgim yok.");
-    // Fonksiyonun devam etmesini engelle
     return; 
   }
 
@@ -236,9 +339,9 @@ async function soruyuAnalizEt(kullaniciSorusu) {
   switch (veriTipi) {
     case "isim":
       if (secilenFutbolcu.isim.toLowerCase() == deger.toLowerCase()) {
-        div.innerText = `Tebrikler, doğru bildin! ben ${secilenFutbolcu.isim.toLowerCase()}! ${sorulanSoruSayisi} soruda bildin! 
-        ismini ve skorunu liderlik tablosuna eklemek ister misin?`;
-        
+        cevapVer(`Tebrikler, doğru bildin! ben ${secilenFutbolcu.isim.toLowerCase()}! ${sorulanSoruSayisi} soruda bildin! 
+        ismini ve skorunu liderlik tablosuna eklemek ister misin?`);
+
         futbolcuIsimAlani.innerText = `${secilenFutbolcu.isim}`;
         setTimeout(() => {
           liderlikTablosunaEkle(sorulanSoruSayisi);
@@ -246,24 +349,25 @@ async function soruyuAnalizEt(kullaniciSorusu) {
 
         console.log("oyun bitti");
       } else {
-        div.innerText = `Hayır, ben ${deger.toLowerCase()} değilim, tekrar denemelisin :)`;
+        cevapVer(`Hayır, ben ${deger.toLowerCase()} değilim, tekrar denemelisin :) `)
         console.log("hayır");
       }
       break;
 
     case "milliyet":
       if (secilenFutbolcu.milliyet.toLowerCase() == deger.toLowerCase()) {
-        div.innerText = "evet";
+        cevapVer("evet");
         console.log("evet");
       } else {
-        div.innerText = "hayır";
+        cevapVer("hayır");
         console.log("hayır");
       }
       break;    
 
     case "durum":
       if (secilenFutbolcu.durum.toLowerCase() == deger.toLowerCase()) {
-        div.innerText = "Evet, aktif futbol hayatıma devam ediyorum.";
+        cevapVer("Evet, aktif futbol hayatıma devam ediyorum.")
+        // div.innerText = "Evet, aktif futbol hayatıma devam ediyorum.";
         console.log("Evet, aktif futbol hayatına devam ediyor.");
       } else {
         div.innerText = "Hayır, artık aktif olarak oynamıyorum.";
@@ -273,10 +377,10 @@ async function soruyuAnalizEt(kullaniciSorusu) {
 
     case "mevki":
       if (secilenFutbolcu.mevki.toLowerCase() == deger.toLowerCase()) {
-        div.innerText = "evet";
+        cevapVer("evvet");
         console.log("evet");
       } else {
-        div.innerText = "hayır";
+        cevapVer("hayır");
         console.log("hayır");
       }
       break;  
@@ -286,10 +390,10 @@ async function soruyuAnalizEt(kullaniciSorusu) {
         // Takım isimlerini içeren yeni bir dizi oluşturup hepsini küçük harfe çevir
         const kucukHarfTakimlar = secilenFutbolcu.oynadigi_takimlar.map(takim => takim.toLowerCase());
         if (kucukHarfTakimlar.includes(deger.toLowerCase())) {
-          div.innerText = "evet";
+          cevapVer(`evet, ${deger.toLowerCase()} takımında oynadım`);
           console.log("evet");
         } else {
-          div.innerText = "hayır";
+          cevapVer(`hayır, ${deger.toLowerCase()} takımında oynamadım`);
           console.log("hayır");
         }
       break;
@@ -298,10 +402,22 @@ async function soruyuAnalizEt(kullaniciSorusu) {
 
         const kucukHarfKupalar = secilenFutbolcu.kazandigi_kupalar.map(kupa => kupa.toLowerCase());
         if (kucukHarfKupalar.includes(deger.toLowerCase())) {
-          div.innerText = "evet";
+          cevapVer("evet");
           console.log("evet");
         } else {
-          div.innerText = "hayır";
+          cevapVer("hayır")
+          console.log("hayır");
+        }
+      break;
+
+    case "lig":
+
+        const kucukHarfLigler = secilenFutbolcu.oynadigi_ligler.map(kupa => kupa.toLowerCase());
+        if (kucukHarfLigler.includes(deger.toLowerCase())) {
+          cevapVer(`evet ${deger.toLowerCase()} de oynadım`);
+          console.log("evet");
+        } else {
+          cevapVer(`hayır, ${deger.toLowerCase()} liginde oynamadım.`)
           console.log("hayır");
         }
       break;
@@ -310,12 +426,10 @@ async function soruyuAnalizEt(kullaniciSorusu) {
       break;
   }
 
-  chats.appendChild(div);
   scrollToBottom();
 
 
 }
-
 
 
 
@@ -337,11 +451,12 @@ async function soruSor() {
     await soruyuAnalizEt(soruInput.value); // Soruyu işlemek için gönder ve tamamlanmasını bekle
 
   } else {
-    div.innerText = "Hey, beni tanımak için soru sorman gerekiyor!"; 
-    div.setAttribute('class', 'footballer-chat');
+    cevapVer("Hey, beni tanımak için soru sorman gerekiyor!");
+    // div.innerText = "Hey, beni tanımak için soru sorman gerekiyor!"; 
+    // div.setAttribute('class', 'footballer-chat');
 
-    chats.appendChild(div);
-    scrollToBottom();
+    // chats.appendChild(div);
+    // scrollToBottom();
   }
 
 
@@ -353,8 +468,9 @@ async function soruSor() {
     let kalanSure = document.createElement("div");
 
 
-    pesMesaji.innerText = "Hey biraz zorlanıyor gibisin, Pes etmeye ne dersin :)";
-    pesMesaji.setAttribute('class', 'footballer-chat');
+    cevapVer("Hey biraz zorlanıyor gibisin, Pes etmeye ne dersin :) ");
+    // pesMesaji.innerText = "Hey biraz zorlanıyor gibisin, Pes etmeye ne dersin :)";
+    // pesMesaji.setAttribute('class', 'footballer-chat');
 
     let devamButon = butonOlustur("DEVAM", "green", () => {
       
@@ -390,8 +506,9 @@ async function soruSor() {
       // setInterval asenkron bir yapıya sahiptir ve belirli aralıklarla bir işlem yapar. Bu sırada diğer işlemler de çalışmaya devam eder.
 
 
-      sonucMesaji.innerText = `ben ${secilenFutbolcu.isim.toLowerCase()}! Daha çok pratik yapmalısın.!`;
-      sonucMesaji.setAttribute('class', 'footballer-chat');
+      cevapVer(`ben ${secilenFutbolcu.isim.toLowerCase()}! Daha çok pratik yapmalısın.!`)
+      // sonucMesaji.innerText = `ben ${secilenFutbolcu.isim.toLowerCase()}! Daha çok pratik yapmalısın.!`;
+      // sonucMesaji.setAttribute('class', 'footballer-chat');
       sorulanSoruSayisi = 0;
 
       setTimeout(() => {
