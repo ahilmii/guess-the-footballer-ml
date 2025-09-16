@@ -68,6 +68,13 @@ bilgiSablonlari = [
     { anahtar: 'takim:Leipzig', sablon_soru: 'Leipzigde oynadın mı' },
 
     
+    // belçika
+    { anahtar: 'takim:Sporting', sablon_soru: 'Sportingde oynadın mı' },
+    { anahtar: 'takim:Sporting Lizbon', sablon_soru: 'Sportingde oynadın mı' },
+    { anahtar: 'takim:Porto', sablon_soru: 'Portoda oynadın mı' },
+    { anahtar: 'takim:Benfica', sablon_soru: 'Benficada oynadın mı' },
+
+
     // çeşitli
     { anahtar: 'takim:Dinamo Zagreb', sablon_soru: 'Dinamo Zagrebde oynadın mı' },
     { anahtar: 'takim:Birmingham', sablon_soru: 'Birminghamda oynadın mı' },
@@ -76,7 +83,6 @@ bilgiSablonlari = [
     { anahtar: 'takim:Ajax', sablon_soru: 'Ajaxda oynadın mı' }, // 40
     { anahtar: 'takim:Al Gharafa', sablon_soru: 'Al Gharafada oynadın mı' },
     { anahtar: 'takim:Genk', sablon_soru: 'Genkde oynadın mı' },
-    { anahtar: 'takim:Sporting', sablon_soru: 'Sportingde oynadın mı' },
     { anahtar: 'takim:Al Nassr', sablon_soru: 'Al Nassrda oynadın mı' },
     { anahtar: 'takim:Basel', sablon_soru: 'Baselde oynadın mı' },
     { anahtar: 'takim:Celtic', sablon_soru: 'Celticde oynadın mı' },
