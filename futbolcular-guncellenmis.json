@@ -5,7 +5,7 @@
     "milliyet": "Türk",
     "mevki": "Orta saha",
     "durum": "Aktif",
-    "oynadigi_takimlar": ["Karlsruher SC", "Hamburger SV", "Bayer Leverkusen", "AC Milan", "İnter"],
+    "oynadigi_takimlar": ["Karlsruher SC", "Hamburger SV", "Bayer Leverkusen", "Milan", "İnter"],
     "oynadigi_ligler": ["2. Bundesliga", "Bundesliga", "Serie A"],
     "kazandigi_kupalar": ["Serie A", "Süper Kupa"]
   },
@@ -55,7 +55,7 @@
     "milliyet": "İtalyan",
     "mevki": "Kaleci",
     "durum": "Aktif",
-    "oynadigi_takimlar": ["AC Milan", "Paris Saint-Germain", "Manchester City"],
+    "oynadigi_takimlar": ["Milan", "Paris Saint-Germain", "Manchester City"],
     "oynadigi_ligler": ["Serie A", "Ligue 1", "Premier League"],
     "kazandigi_kupalar": ["Avrupa Şampiyonası", "Ligue 1", "Şampiyonlar Ligi"]
   },
@@ -95,7 +95,7 @@
     "milliyet": "Hırvat",
     "mevki": "Orta saha",
     "durum": "Aktif",
-    "oynadigi_takimlar": ["Dinamo Zagreb", "Tottenham", "Real Madrid", "AC Milan"],
+    "oynadigi_takimlar": ["Dinamo Zagreb", "Tottenham", "Real Madrid", "Milan"],
     "oynadigi_ligler": ["1. HNL", "Premier League", "La Liga", "Serie A"],
     "kazandigi_kupalar": ["La Liga", "Şampiyonlar Ligi", "Ballon dor", "UEFA Süper Kupa"]
   },
