@@ -75,7 +75,7 @@
     "milliyet": "İngiliz",
     "mevki": "Forvet",
     "durum": "Aktif",
-    "oynadigi_takimlar": ["Tottenham", "Bayern Munich"],
+    "oynadigi_takimlar": ["Tottenham", "Bayern Münih"],
     "oynadigi_ligler": ["Premier League", "Bundesliga"],
     "kazandigi_kupalar": ["Bundesliga"]
   },
@@ -125,7 +125,7 @@
     "milliyet": "Türk",
     "mevki": "Forvet",
     "durum": "Aktif",
-    "oynadigi_takimlar": ["Bayern Munich", "Juventus"],
+    "oynadigi_takimlar": ["Bayern Münih", "Juventus"],
     "oynadigi_ligler": ["Bundesliga", "Serie A"],
     "kazandigi_kupalar": [""]
   },  
@@ -165,7 +165,7 @@
     "milliyet": "Polonyalı",
     "mevki": "Forvet",
     "durum": "Aktif",
-    "oynadigi_takimlar": ["Lech Poznan", "Borussia Dortmund", "Bayern Munich", "Barcelona"],
+    "oynadigi_takimlar": ["Lech Poznan", "Borussia Dortmund", "Bayern Münih", "Barcelona"],
     "oynadigi_ligler": ["Ekstraklasa", "Bundesliga", "La Liga"],
     "kazandigi_kupalar": ["Bundesliga", "Şampiyonlar Ligi", "La Liga", "UEFA Süper Kupa", "Polonya Kupası"]
   },
@@ -205,7 +205,7 @@
     "milliyet": "Alman",
     "mevki": "Orta saha",
     "durum": "Emekli",
-    "oynadigi_takimlar": ["Hansa Rostock", "Bayern Munich", "Real Madrid"],
+    "oynadigi_takimlar": ["Hansa Rostock", "Bayern Münih", "Real Madrid"],
     "oynadigi_ligler": ["2. Bundesliga", "Bundesliga", "La Liga"],
     "kazandigi_kupalar": ["Bundesliga", "La Liga", "Şampiyonlar Ligi", "Dünya Kupası", "UEFA Süper Kupa"]
   },
@@ -235,7 +235,7 @@
     "milliyet": "Alman",
     "mevki": "Kanat",
     "durum": "Aktif",
-    "oynadigi_takimlar": ["Schalke 04", "Manchester City", "Bayern Munich", "Galatasaray"],
+    "oynadigi_takimlar": ["Schalke", "Manchester City", "Bayern Münih", "Galatasaray"],
     "oynadigi_ligler": ["Bundesliga", "Premier League", "Süper Lig"],
     "kazandigi_kupalar": ["Premier League", "Bundesliga", "Şampiyonlar Ligi", "UEFA Süper Kupa"]
   },
@@ -295,7 +295,7 @@
     "milliyet": "İsviçreli",
     "mevki": "Kaleci",
     "durum": "Aktif",
-    "oynadigi_takimlar": ["Basel", "Borussia Mönchengladbach", "Bayern Munich", "İnter"],
+    "oynadigi_takimlar": ["Basel", "Borussia Mönchengladbach", "Bayern Münih", "İnter"],
     "oynadigi_ligler": ["Super League", "Bundesliga", "Serie A"],
     "kazandigi_kupalar": ["Bundesliga", "Serie A"]
   }
