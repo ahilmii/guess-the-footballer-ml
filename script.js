@@ -414,7 +414,7 @@ async function soruyuAnalizEt(kullaniciSorusu) {
 
         const kucukHarfLigler = secilenFutbolcu.oynadigi_ligler.map(kupa => kupa.toLowerCase());
         if (kucukHarfLigler.includes(deger.toLowerCase())) {
-          cevapVer(`evet ${deger.toLowerCase()} de oynadım`);
+          cevapVer(`evet ${deger.toLowerCase()} liginde oynadım`);
           console.log("evet");
         } else {
           cevapVer(`hayır, ${deger.toLowerCase()} liginde oynamadım.`)
