@@ -44,8 +44,13 @@ bilgiSablonlari = [
     { anahtar: 'takim:Juventus', sablon_soru: 'Juventusda oynadın mı' },
     { anahtar: 'takim:Cagliari', sablon_soru: 'Cagliaride oynadın mı' },
     { anahtar: 'takim:Sampdoria', sablon_soru: 'Sampdoriada oynadın mı' },
+    { anahtar: 'takim:Atalanta', sablon_soru: 'Atalantada oynadın mı' },
+    { anahtar: 'takim:Lazio', sablon_soru: 'Lazioda oynadın mı' },
+    { anahtar: 'takim:Fiorentina', sablon_soru: 'Fiorentinada oynadın mı' },
+
 
     // bundesliga
+    { anahtar: 'takim:Bayer Leverkusen', sablon_soru: 'Leverkusende oynadın mı' },
     { anahtar: 'takim:Bayer Leverkusen', sablon_soru: 'Bayer Leverkusende oynadın mı' },
     { anahtar: 'takim:Werder Bremen', sablon_soru: 'Werder Bremende oynadın mı' },
     { anahtar: 'takim:Wolfsburg', sablon_soru: 'Wolfsburgda oynadın mı' },
@@ -54,7 +59,11 @@ bilgiSablonlari = [
     { anahtar: 'takim:Bayern Münih', sablon_soru: 'Bayernde oynadın mı' },
     { anahtar: 'takim:Borussia Dortmund', sablon_soru: 'Borussia Dortmundda oynadın mı' },
     { anahtar: 'takim:Borussia Dortmund', sablon_soru: 'Dortmundda oynadın mı' },
+    { anahtar: 'takim:Borussia Dortmund', sablon_soru: 'Dortmuntda oynadın mı' },
+    { anahtar: 'takim:Schalke', sablon_soru: 'Schalkede oynadın mı' },
     { anahtar: 'takim:Borussia Mönchengladbach', sablon_soru: 'Mönchengladbachda oynadın mı' },
+    { anahtar: 'takim:Frankfurt', sablon_soru: 'Frankfurtda oynadın mı' },
+    { anahtar: 'takim:Leipzig', sablon_soru: 'Leipzigde oynadın mı' },
 
     
     // çeşitli
@@ -64,17 +73,24 @@ bilgiSablonlari = [
     { anahtar: 'takim:Lech Poznan', sablon_soru: 'Lech Poznanda oynadın mı' },
     { anahtar: 'takim:Ajax', sablon_soru: 'Ajaxda oynadın mı' }, // 40
     { anahtar: 'takim:Al Gharafa', sablon_soru: 'Al Gharafada oynadın mı' },
-    { anahtar: 'takim:Schalke', sablon_soru: 'Schalkede oynadın mı' },
     { anahtar: 'takim:Genk', sablon_soru: 'Genkde oynadın mı' },
     { anahtar: 'takim:Sporting', sablon_soru: 'Sportingde oynadın mı' },
     { anahtar: 'takim:Al Nassr', sablon_soru: 'Al Nassrda oynadın mı' },
     { anahtar: 'takim:Basel', sablon_soru: 'Baselde oynadın mı' },
+    { anahtar: 'takim:Celtic', sablon_soru: 'Celticde oynadın mı' },
 
 
     // süper lig
     { anahtar: 'takim:Fenerbahçe', sablon_soru: 'Fenerde oynadın mı' },
     { anahtar: 'takim:Fenerbahçe', sablon_soru: 'Fenerbahçede oynadın mı' },
     { anahtar: 'takim:Galatasaray', sablon_soru: 'Galatasarayda oynadın mı' },
+    { anahtar: 'takim:Beşiktaş', sablon_soru: 'Beşiktaşda oynadın mı' },
+    { anahtar: 'takim:Trabzon', sablon_soru: 'Trabzonda oynadın mı' },
+    { anahtar: 'takim:Konyaspor', sablon_soru: 'Konyasporda oynadın mı' },
+    { anahtar: 'takim:Başakşehir', sablon_soru: 'Başakşehirde oynadın mı' },
+    { anahtar: 'takim:Göztepe', sablon_soru: 'Göztepede oynadın mı' },
+
+
     
     // la liga
     { anahtar: 'takim:Real Madrid', sablon_soru: 'Realde oynadın mı' },
@@ -86,6 +102,11 @@ bilgiSablonlari = [
     { anahtar: 'takim:Villarreal', sablon_soru: 'Villarrealde oynadın mı' },
     { anahtar: 'takim:Atletico Madrid', sablon_soru: 'Atletico Madridde oynadın mı' },
     { anahtar: 'takim:Atletico Madrid', sablon_soru: 'Atleticoda oynadın mı' },
+    { anahtar: 'takim:Valencia', sablon_soru: 'Valenciada oynadın mı' },
+    { anahtar: 'takim:Sevilla', sablon_soru: 'Sevillada oynadın mı' },
+    { anahtar: 'takim:Atletic Bilbao', sablon_soru: 'Atletic Bilbaoda oynadın mı' },
+
+
 
     // premier lig
     { anahtar: 'takim:Manchester United', sablon_soru: 'Manchester United forması giydin mi' },
@@ -97,10 +118,13 @@ bilgiSablonlari = [
     { anahtar: 'takim:Chelsea', sablon_soru: 'Chelseade oynadın mı' },
     { anahtar: 'takim:Liverpool', sablon_soru: 'Liverpoolda oynadın mı' },
     { anahtar: 'takim:Southampton', sablon_soru: 'Southamptonda oynadın mı' },
-    { anahtar: 'takim:Celtic', sablon_soru: 'Celticde oynadın mı' },
     { anahtar: 'takim:Tottenham', sablon_soru: 'Tottenhamda oynadın mı' },
     { anahtar: 'takim:West Ham United', sablon_soru: 'West Ham Unitedda oynadın mı' },
     { anahtar: 'takim:Arsenal', sablon_soru: 'Arsenalda oynadın mı' },
+    { anahtar: 'takim:Everton', sablon_soru: 'Evertonda oynadın mı' },
+    { anahtar: 'takim:Aston Villa', sablon_soru: 'Aston Villada oynadın mı' },
+    { anahtar: 'takim:Newcastle United', sablon_soru: 'Newcastle Unitedda oynadın mı' },
+    { anahtar: 'takim:Wolves', sablon_soru: 'Wolvesda oynadın mı' },
 
     // ligue 1
     { anahtar: 'takim:Paris Saint-Germain', sablon_soru: 'Pariste oynadın mı' },
@@ -108,6 +132,10 @@ bilgiSablonlari = [
     { anahtar: 'takim:Monaco', sablon_soru: 'Monacoda oynadın mı' },
     { anahtar: 'takim:Lille', sablon_soru: 'Lillede oynadın mı' },
     { anahtar: 'takim:Nice', sablon_soru: 'Niceda oynadın mı' },
+    { anahtar: 'takim:Lyon', sablon_soru: 'Lyonda oynadın mı' },
+    { anahtar: 'takim:Marsilya', sablon_soru: 'Marsilyada oynadın mı' },
+    { anahtar: 'takim:Nantes', sablon_soru: 'Nantesde oynadın mı' },
+    { anahtar: 'takim:Rennes', sablon_soru: 'Rennesde oynadın mı' },
 
 
     { anahtar: 'isim:Lionel Messi', sablon_soru: 'Sen Lionel Messi misin' }, // 24
@@ -187,7 +215,7 @@ bilgiSablonlari = [
     { anahtar: 'lig:La Liga', sablon_soru: 'La Ligada oynadın mı' }, // 134
 
 
-
+    { anahtar: 'durum:aktif', sablon_soru: 'Aktif bir oyuncu musun'},
     { anahtar: 'durum:aktif', sablon_soru: 'Aktif bir futbolcu musun'},
     { anahtar: 'durum:aktif', sablon_soru: 'Hala aktif futbol oynuyor musun'}, // halen aktif olarak futbol oynuyor musun -> 0.86 aldım
     { anahtar: 'durum:aktif', sablon_soru: 'Hala oynuyor musun'},
@@ -311,7 +339,7 @@ async function soruyuAnalizEt(kullaniciSorusu) {
   const skor = enYuksekSkorTensor.dataSync()[0]; // en yüksek skorun tensör değerini al
   const index = enYuksekSkorIndex.dataSync()[0]; // Index'i bir sayı olarak almak için
 
-  const ESIK_DEGERİ = 0.85; 
+  const ESIK_DEGERİ = 0.82; 
   console.log("skor" + skor)
   console.log("index " + index);
 
@@ -492,7 +520,7 @@ async function soruSor() {
 
       // setInterval asenkron bir yapıya sahiptir ve belirli aralıklarla bir işlem yapar. Bu sırada diğer işlemler de çalışmaya devam eder.
 
-
+      futbolcuIsimAlani.innerText = `${secilenFutbolcu.isim}`;
       cevapVer(`ben ${secilenFutbolcu.isim.toLowerCase()}! Daha çok pratik yapmalısın.!`)
       sorulanSoruSayisi = 0;
 
