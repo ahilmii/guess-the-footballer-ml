@@ -26,8 +26,8 @@
     "mevki": "Orta saha",
     "durum": "Aktif",
     "oynadigi_takimlar": ["Chelsea", "Werder Bremen", "Wolfsburg", "Manchester City", "Napoli"],
-    "oynadigi_ligler": ["Premier League", "Bundesliga", "Serie A"],
-    "kazandigi_kupalar": ["Premier League", "FA Cup", "Şampiyonlar Ligi"]
+    "oynadigi_ligler": ["Premier Lig", "Bundesliga", "Serie A"],
+    "kazandigi_kupalar": ["Premier Lig", "FA Cup", "Şampiyonlar Ligi"]
   },
   {
     "id": 4,
@@ -36,8 +36,8 @@
     "mevki": "Defans",
     "durum": "Aktif",
     "oynadigi_takimlar": ["FC Groningen", "Celtic", "Southampton", "Liverpool"],
-    "oynadigi_ligler": ["Eredivisie", "Scottish Premier League", "Premier League"],
-    "kazandigi_kupalar": ["Premier League", "Şampiyonlar Ligi", "FA Cup", "İskoçya Premiership" ,"UEFA Süper Kupa"]
+    "oynadigi_ligler": ["Eredivisie", "Scottish Premier Lig", "Premier Lig"],
+    "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "FA Cup", "İskoçya Premiership" ,"UEFA Süper Kupa"]
   },
   {
     "id": 5,
@@ -56,7 +56,7 @@
     "mevki": "Kaleci",
     "durum": "Aktif",
     "oynadigi_takimlar": ["Milan", "Paris Saint-Germain", "Manchester City"],
-    "oynadigi_ligler": ["Serie A", "Ligue 1", "Premier League"],
+    "oynadigi_ligler": ["Serie A", "Ligue 1", "Premier Lig"],
     "kazandigi_kupalar": ["Avrupa Şampiyonası", "Ligue 1", "Şampiyonlar Ligi"]
   },
   {
@@ -76,7 +76,7 @@
     "mevki": "Forvet",
     "durum": "Aktif",
     "oynadigi_takimlar": ["Tottenham", "Bayern Münih"],
-    "oynadigi_ligler": ["Premier League", "Bundesliga"],
+    "oynadigi_ligler": ["Premier Lig", "Bundesliga"],
     "kazandigi_kupalar": ["Bundesliga"]
   },
   {
@@ -96,7 +96,7 @@
     "mevki": "Orta saha",
     "durum": "Aktif",
     "oynadigi_takimlar": ["Dinamo Zagreb", "Tottenham", "Real Madrid", "Milan"],
-    "oynadigi_ligler": ["1. HNL", "Premier League", "La Liga", "Serie A"],
+    "oynadigi_ligler": ["1. HNL", "Premier Lig", "La Liga", "Serie A"],
     "kazandigi_kupalar": ["La Liga", "Şampiyonlar Ligi", "Ballon dor", "UEFA Süper Kupa"]
   },
   {
@@ -116,8 +116,8 @@
     "mevki": "Orta saha",
     "durum": "Aktif",
     "oynadigi_takimlar": ["Manchester City"],
-    "oynadigi_ligler": ["Premier League"],
-    "kazandigi_kupalar": ["Premier League", "Şampiyonlar Ligi", "FA Cup", "UEFA Süper Kupa"]
+    "oynadigi_ligler": ["Premier Lig"],
+    "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "FA Cup", "UEFA Süper Kupa"]
   },  
   {
     "id": 14,
@@ -156,8 +156,8 @@
     "mevki": "Forvet",
     "durum": "Aktif",
     "oynadigi_takimlar": ["Molde", "Red Bull Salzburg", "Borussia Dortmund", "Manchester City"],
-    "oynadigi_ligler": ["Eliteserien", "Bundesliga", "Premier League"],
-    "kazandigi_kupalar": ["Premier League", "Şampiyonlar Ligi", "UEFA Süper Kupa"]
+    "oynadigi_ligler": ["Eliteserien", "Bundesliga", "Premier Lig"],
+    "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "UEFA Süper Kupa"]
   },
     {
     "id": 24,
@@ -176,7 +176,7 @@
     "mevki": "Orta saha",
     "durum": "Aktif",
     "oynadigi_takimlar": ["West Ham United", "Arsenal"],
-    "oynadigi_ligler": ["Premier League"],
+    "oynadigi_ligler": ["Premier Lig"],
     "kazandigi_kupalar": ["Konferans Ligi"]
   },
   {
@@ -186,8 +186,8 @@
     "mevki": "Orta saha",
     "durum": "Emekli",
     "oynadigi_takimlar": ["West Ham United", "Chelsea", "Manchester City", "New York City"],
-    "oynadigi_ligler": ["Premier League", "MLS"],
-    "kazandigi_kupalar": ["Premier League", "Şampiyonlar Ligi", "FA Cup", "UEFA Avrupa Ligi"]
+    "oynadigi_ligler": ["Premier Lig", "MLS"],
+    "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "FA Cup", "UEFA Avrupa Ligi"]
   },
   {
     "id": 33,
@@ -196,8 +196,8 @@
     "mevki": "Orta saha",
     "durum": "Aktif",
     "oynadigi_takimlar": ["Villarreal", "Atletico Madrid", "Manchester City"],
-    "oynadigi_ligler": ["Segunda División", "La Liga", "Premier League"],
-    "kazandigi_kupalar": ["Premier League", "Şampiyonlar Ligi", "Avrupa Şampiyonası", "Ballon dor", "UEFA Süper Kupa"]
+    "oynadigi_ligler": ["Segunda División", "La Liga", "Premier Lig"],
+    "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "Avrupa Şampiyonası", "Ballon dor", "UEFA Süper Kupa"]
   },
   {
     "id": 38,
@@ -236,8 +236,8 @@
     "mevki": "Kanat",
     "durum": "Aktif",
     "oynadigi_takimlar": ["Schalke", "Manchester City", "Bayern Münih", "Galatasaray"],
-    "oynadigi_ligler": ["Bundesliga", "Premier League", "Süper Lig"],
-    "kazandigi_kupalar": ["Premier League", "Bundesliga", "Şampiyonlar Ligi", "UEFA Süper Kupa"]
+    "oynadigi_ligler": ["Bundesliga", "Premier Lig", "Süper Lig"],
+    "kazandigi_kupalar": ["Premier Lig", "Bundesliga", "Şampiyonlar Ligi", "UEFA Süper Kupa"]
   },
   {
     "id": 80,
@@ -256,8 +256,8 @@
     "mevki": "Kaleci",
     "durum": "Aktif",
     "oynadigi_takimlar": ["Genk", "Chelsea", "Atletico Madrid", "Real Madrid"],
-    "oynadigi_ligler": ["Pro League", "Premier League", "La Liga"],
-    "kazandigi_kupalar": ["Premier League", "La Liga", "Şampiyonlar Ligi", "UEFA Süper Kupa", "UEFA Avrupa Ligi"]
+    "oynadigi_ligler": ["Pro League", "Premier Lig", "La Liga"],
+    "kazandigi_kupalar": ["Premier Lig", "La Liga", "Şampiyonlar Ligi", "UEFA Süper Kupa", "UEFA Avrupa Ligi"]
   },
   {
     "id": 78,
