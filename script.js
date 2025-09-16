@@ -1,4 +1,5 @@
-const durumParagrafi = document.getElementById("durum");
+import { pipeline } from 'https://cdn.jsdelivr.net/npm/@xenova/transformers@2.17.1';
+
 let FUTBOLCU_LISTE = [];
 let model; // başka fonksiyonlarda da erişebilmek için global olarak tanımlıyoruz.
 let secilenFutbolcu;
@@ -13,7 +14,7 @@ const futbolcuIsimAlani = document.getElementById("futbolcu-isim-alani");
 
 
 // Şablon Soruları ve Veri Anahtarlarını Oluşturma
-// Bu yapı, hangi sorunun hangi veriyi kontrol edeceğini belirler.
+// Bu yapı, hangi sorunun hangi veriyi kontrol edeceğini belirliyruz
 bilgiSablonlari = [
     { anahtar: 'milliyet:Türk', sablon_soru: 'Türk müsün' },
     { anahtar: 'milliyet:Arjantin', sablon_soru: 'Arjantinli misin' },
@@ -59,7 +60,7 @@ bilgiSablonlari = [
     // çeşitli
     { anahtar: 'takim:Dinamo Zagreb', sablon_soru: 'Dinamo Zagrebde oynadın mı' },
     { anahtar: 'takim:Birmingham', sablon_soru: 'Birminghamda oynadın mı' },
-    { anahtar: 'takim:Moldede', sablon_soru: 'Moldede oynadın mı' },
+    { anahtar: 'takim:Molde', sablon_soru: 'Moldede oynadın mı' },
     { anahtar: 'takim:Lech Poznan', sablon_soru: 'Lech Poznanda oynadın mı' },
     { anahtar: 'takim:Ajax', sablon_soru: 'Ajaxda oynadın mı' }, // 40
     { anahtar: 'takim:Al Gharafa', sablon_soru: 'Al Gharafada oynadın mı' },
@@ -213,7 +214,6 @@ async function fetchData() {
     }
     FUTBOLCU_LISTE = await response.json();
 
-    // console.log(FUTBOLCU_LISTE[0]["oynadigi_takimlar"][0]);
     return FUTBOLCU_LISTE;
   } catch (error) {
     console.error("Hata:", error);
@@ -231,7 +231,6 @@ function cevapVer(mesaj) {
 
 
 async function oyunKur() {
-  // durumParagrafi.innerText = "Veriler ve model yükleniyor...";
 
   await fetchData();
 
@@ -239,25 +238,24 @@ async function oyunKur() {
     
     cevapVer("Bir dakika bekle, hazırlanmam lazım!");
     console.log("Model yüklemesi başlatılıyor...");
-    model = await use.load();
+    model = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2', {quantized: true}) 
 
-    // let div = document.createElement("div");
-    // div.setAttribute('class', 'footballer-chat');
 
     console.log("Model başarıyla yüklendi!");
 
     // Şablon Soruların Vektörlerini HESAPLA ve SAKLA
     console.log("Bilgi şablonlarının vektörleri hesaplanıyor...");
-    let sablonCumleleri = bilgiSablonlari.map(s => s.sablon_soru);
+    let sablonCumleleri = bilgiSablonlari.map(s => s.sablon_soru.toLowerCase()); // toLowerCase() orijinal stringi değiştirmez, sadece yeni bir string döndürür.
+
+    const ciktilar = await model(sablonCumleleri, {pooling: 'mean', normalize: false})
+    // hesaplanan vektörleri global değişkene atadım
+    const rawData = ciktilar.data;
+    const dimensions = ciktilar.dims;
+    sablonVektorleri = tf.tensor(rawData, dimensions);    
+    
+    console.log("Şablon vektörleri hafızaya alındı.");
     futbolcuIsimAlani.innerText = "Guess who I am";
     userStatus.innerText = "online"; 
-
-    sablonCumleleri = sablonCumleleri.map(cumle => cumle.toLowerCase()); // toLowerCase() orijinal stringi değiştirmez, sadece yeni bir string döndürür.
-
-
-    sablonVektorleri = await model.embed(sablonCumleleri); // hesaplanan vektörleri global değişkene atadık
-    console.log("Şablon vektörleri hafızaya alındı.");
-
 
     while(chats.hasChildNodes()) {
       chats.removeChild(chats.firstChild);
@@ -265,22 +263,15 @@ async function oyunKur() {
 
 
     cevapVer("Hey! Benim kim olduğumu bulabilir misin?");
-    // div.innerText = "Hey! Benim kim olduğumu bulabilir misin?"; // bu soruyu model yüklendikten hemen sonra mı yazdıralım yoksa şablon vektörleri hesaplandıktan sonra mı?
-    // chats.appendChild(div);
-    // scrollToBottom();
 
 
-    // rastgele bir futbolcu seç
+    // rastgele bir futbolcu seçiyoruz
     const rastgeleIndex = Math.floor(Math.random() * FUTBOLCU_LISTE.length);
     secilenFutbolcu     = FUTBOLCU_LISTE[rastgeleIndex];
     console.log(`Bilgisayarın tuttuğu futbolcu: ${secilenFutbolcu.isim}`); 
 
-
-    // durumParagrafi.innerText = "Model hazır sorunu sorabilirsin."
-
   } catch (error) {
     console.error("Model yüklenirken bir hata oluştu:", error);
-    // durumParagrafi.innerText = "Hata: Model yüklenemedi. Konsolu kontrol edin.";
   }
 
 
@@ -298,8 +289,12 @@ function scrollToBottom() {
 async function soruyuAnalizEt(kullaniciSorusu) {
 
   const kucukHarfSoru = kullaniciSorusu.toLowerCase();
-  const kullaniciVektoru = await model.embed([kucukHarfSoru]);
+  const cikti = await model(kucukHarfSoru, {pooling: 'mean', normalize: false})
 
+  const rawData = cikti.data;
+  const dimensions = cikti.dims;
+
+  const kullaniciVektoru = tf.tensor(rawData, dimensions)
 
 
   // cosinüs benzerliği
@@ -367,10 +362,9 @@ async function soruyuAnalizEt(kullaniciSorusu) {
     case "durum":
       if (secilenFutbolcu.durum.toLowerCase() == deger.toLowerCase()) {
         cevapVer("Evet, aktif futbol hayatıma devam ediyorum.")
-        // div.innerText = "Evet, aktif futbol hayatıma devam ediyorum.";
         console.log("Evet, aktif futbol hayatına devam ediyor.");
       } else {
-        div.innerText = "Hayır, artık aktif olarak oynamıyorum.";
+        cevapVer("Hayır, artık aktif olarak oynamıyorum.")
         console.log("Hayır, artık aktif olarak oynamıyor.");
       }
       break;    
@@ -387,7 +381,6 @@ async function soruyuAnalizEt(kullaniciSorusu) {
       
     case "takim":
 
-        // Takım isimlerini içeren yeni bir dizi oluşturup hepsini küçük harfe çevir
         const kucukHarfTakimlar = secilenFutbolcu.oynadigi_takimlar.map(takim => takim.toLowerCase());
         if (kucukHarfTakimlar.includes(deger.toLowerCase())) {
           cevapVer(`evet, ${deger.toLowerCase()} takımında oynadım`);
@@ -452,25 +445,19 @@ async function soruSor() {
 
   } else {
     cevapVer("Hey, beni tanımak için soru sorman gerekiyor!");
-    // div.innerText = "Hey, beni tanımak için soru sorman gerekiyor!"; 
-    // div.setAttribute('class', 'footballer-chat');
 
-    // chats.appendChild(div);
-    // scrollToBottom();
   }
 
 
 
 
-  if (sorulanSoruSayisi == 5 || sorulanSoruSayisi == 10 || sorulanSoruSayisi == 15 || sorulanSoruSayisi == 20) {
+  if (sorulanSoruSayisi > 0 && sorulanSoruSayisi % 5 == 0) {
     let pesMesaji = document.createElement('div');
     let sonucMesaji = document.createElement('div');
     let kalanSure = document.createElement("div");
 
 
     cevapVer("Hey biraz zorlanıyor gibisin, Pes etmeye ne dersin :) ");
-    // pesMesaji.innerText = "Hey biraz zorlanıyor gibisin, Pes etmeye ne dersin :)";
-    // pesMesaji.setAttribute('class', 'footballer-chat');
 
     let devamButon = butonOlustur("DEVAM", "green", () => {
       
@@ -507,8 +494,6 @@ async function soruSor() {
 
 
       cevapVer(`ben ${secilenFutbolcu.isim.toLowerCase()}! Daha çok pratik yapmalısın.!`)
-      // sonucMesaji.innerText = `ben ${secilenFutbolcu.isim.toLowerCase()}! Daha çok pratik yapmalısın.!`;
-      // sonucMesaji.setAttribute('class', 'footballer-chat');
       sorulanSoruSayisi = 0;
 
       setTimeout(() => {
@@ -557,7 +542,6 @@ function liderlikTablosunaEkle(skor) {
   
     let ekleButon  =  butonOlustur("EKLE", "green", () => modalGoster(skor));
     let hayırButon = butonOlustur("HAYIR", "red", oyunBitir);
-    // eklebutonuna tıklandığında modal gelmeli. modalda bir input olacak, inputtan gelen bilgi tabloya yazdırılmalı. ekledikten sonra ekran temizlenmeli
 
     chats.appendChild(ekleButon);
     chats.appendChild(hayırButon);
