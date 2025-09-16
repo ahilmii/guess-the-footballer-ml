@@ -13,7 +13,7 @@ const userStatus  = document.getElementById("status");
 const futbolcuIsimAlani = document.getElementById("futbolcu-isim-alani");
 
 
-// Şablon Soruları ve Veri Anahtarlarını Oluşturma
+//şŞablon soruları ve veri anahtarlarını oluşturma
 // Bu yapı, hangi sorunun hangi veriyi kontrol edeceğini belirliyruz
 bilgiSablonlari = [
     { anahtar: 'milliyet:Türk', sablon_soru: 'Türk müsün' },
@@ -33,12 +33,14 @@ bilgiSablonlari = [
     { anahtar: 'milliyet:İtalyan', sablon_soru: 'İtalyan mısın' },
     { anahtar: 'milliyet:Polonyalı', sablon_soru: 'Polonyalı mısın' },
     { anahtar: 'milliyet:Norveçli', sablon_soru: 'Norveçli misin' },
+    { anahtar: 'milliyet:İsveçli', sablon_soru: 'İsveçli misin' },
     { anahtar: 'milliyet:Hırvat', sablon_soru: 'Hırvat mısın' },
-
+    { anahtar: 'milliyet:Galler', sablon_soru: 'Gallerli misin' },
+    { anahtar: 'milliyet:Yunan', sablon_soru: 'Yunan mısın' },
 
     // serie a
     { anahtar: 'takim:İnter', sablon_soru: 'İnterde oynadın mı' }, // 20
-    { anahtar: 'takim:AC Milan', sablon_soru: 'Milanda oynadın mı' },
+    { anahtar: 'takim:Milan', sablon_soru: 'Milanda oynadın mı' },
     { anahtar: 'takim:Napoli', sablon_soru: 'Napolide oynadın mı' },
     { anahtar: 'takim:Roma', sablon_soru: 'Romada oynadın mı' },
     { anahtar: 'takim:Juventus', sablon_soru: 'Juventusda oynadın mı' },
@@ -564,6 +566,11 @@ async function soruSor() {
 }
 
 sorButonu.addEventListener('click', soruSor);
+soruInput.addEventListener("keydown", (event) => { // neden sorButonu yerine sorInput kullandık? çünkü kullanıcı yazı yazarken odak input'da, yani event. dolayısıyla buton üzerinden çalıştıramayız. 
+  if (event.key === "Enter") { 
+    soruSor();
+  }
+});
 
 
 function liderlikTablosunaEkle(skor) {
@@ -617,7 +624,7 @@ function butonOlustur(icerik, renk, onClickHandler) {
 function modalKapat() {
     const modalOverlay = document.querySelector('.modal-overlay');
     if (modalOverlay) {
-        modalOverlay.style.opacity = '0'; // opacity: 0 → Element tamamen görünmez.
+        modalOverlay.style.opacity = '0'; // opacity: 0 -> Element tamamen görünmez.
         modalOverlay.querySelector('.modal-content').style.transform = 'translateY(-50px)'; //  Modal başlangıçta yukarıda (ekran dışında) konumlanır.
         
         setTimeout(() => {
