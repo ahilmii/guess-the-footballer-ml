@@ -7,7 +7,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Karlsruher SC", "Hamburger SV", "Bayer Leverkusen", "Milan", "İnter"],
     "oynadigi_ligler": ["2. Bundesliga", "Bundesliga", "Serie A"],
-    "kazandigi_kupalar": ["Serie A", "Süper Kupa"]
+    "kazandigi_kupalar": ["Serie A", "Süper Kupa"],
+    "yol": "assets/hakan-calhanoglu.webp"
   },
   {
     "id": 2,
@@ -17,7 +18,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["AS Monaco", "Paris Saint-Germain", "Real Madrid"],
     "oynadigi_ligler": ["Ligue 1", "La Liga"],
-    "kazandigi_kupalar": ["Ligue 1", "Dünya Kupası", "Şampiyonlar Ligi", "UEFA Süper Kupa"]
+    "kazandigi_kupalar": ["Ligue 1", "Dünya Kupası", "Şampiyonlar Ligi", "UEFA Süper Kupa"],
+    "yol": "assets/mbappe.webp"
   },
   {
     "id": 3,
@@ -27,7 +29,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Chelsea", "Werder Bremen", "Wolfsburg", "Manchester City", "Napoli"],
     "oynadigi_ligler": ["Premier Lig", "Bundesliga", "Serie A"],
-    "kazandigi_kupalar": ["Premier Lig", "FA Cup", "Şampiyonlar Ligi"]
+    "kazandigi_kupalar": ["Premier Lig", "FA Cup", "Şampiyonlar Ligi"],
+    "yol":"assets/kevin-de-bruyne.png"
   },
   {
     "id": 4,
@@ -37,7 +40,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["FC Groningen", "Celtic", "Southampton", "Liverpool"],
     "oynadigi_ligler": ["Eredivisie", "Scottish Premier Lig", "Premier Lig"],
-    "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "FA Cup", "İskoçya Premiership" ,"UEFA Süper Kupa"]
+    "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "FA Cup", "İskoçya Premiership" ,"UEFA Süper Kupa"],
+    "yol": "assets/van-dijk.webp"
   },
   {
     "id": 5,
@@ -47,7 +51,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Fenerbahçe", "Real Madrid"],
     "oynadigi_ligler": ["Süper Lig", "La Liga"],
-    "kazandigi_kupalar": ["La Liga", "Şampiyonlar Ligi"]
+    "kazandigi_kupalar": ["La Liga", "Şampiyonlar Ligi"],
+    "yol": "assets/arda-guler.webp"
   },
   {
     "id": 6,
@@ -57,7 +62,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Milan", "Paris Saint-Germain", "Manchester City"],
     "oynadigi_ligler": ["Serie A", "Ligue 1", "Premier Lig"],
-    "kazandigi_kupalar": ["Avrupa Şampiyonası", "Ligue 1", "Şampiyonlar Ligi"]
+    "kazandigi_kupalar": ["Avrupa Şampiyonası", "Ligue 1", "Şampiyonlar Ligi"],
+    "yol": "assets/donnarumma.webp"
   },
   {
     "id": 7,
@@ -67,7 +73,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Las Palmas", "Barcelona"],
     "oynadigi_ligler": ["Segunda División", "La Liga"],
-    "kazandigi_kupalar": ["La Liga", "Copa del Rey", "Avrupa Şampiyonası"]
+    "kazandigi_kupalar": ["La Liga", "Copa del Rey", "Avrupa Şampiyonası"],
+    "yol": "assets/pedri.webp"
   },
   {
     "id": 8,
@@ -77,7 +84,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Tottenham", "Bayern Münih"],
     "oynadigi_ligler": ["Premier Lig", "Bundesliga"],
-    "kazandigi_kupalar": ["Bundesliga"]
+    "kazandigi_kupalar": ["Bundesliga"],
+    "yol": "assets/harry-kane.webp"
   },
   {
     "id": 9,
@@ -87,7 +95,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Bayern Münih"],
     "oynadigi_ligler": ["Bundesliga"],
-    "kazandigi_kupalar": ["Bundesliga", "Şampiyonlar Ligi", "Dünya Kupası", "UEFA Süper Kupa"]
+    "kazandigi_kupalar": ["Bundesliga", "Şampiyonlar Ligi", "Dünya Kupası", "UEFA Süper Kupa"],
+    "yol": "assets/muller.webp"
   },
   {
     "id": 10,
@@ -97,7 +106,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Dinamo Zagreb", "Tottenham", "Real Madrid", "Milan"],
     "oynadigi_ligler": ["1. HNL", "Premier Lig", "La Liga", "Serie A"],
-    "kazandigi_kupalar": ["La Liga", "Şampiyonlar Ligi", "Ballon dor", "UEFA Süper Kupa"]
+    "kazandigi_kupalar": ["La Liga", "Şampiyonlar Ligi", "Ballon dor", "UEFA Süper Kupa"],
+    "yol": "assets/modric.webp"
   },
   {
     "id": 11,
@@ -107,7 +117,8 @@
     "durum": "Emekli",
     "oynadigi_takimlar": ["Roma"],
     "oynadigi_ligler": ["Serie A"],
-    "kazandigi_kupalar": ["Serie A", "Dünya Kupası", "Copa Italia"]
+    "kazandigi_kupalar": ["Serie A", "Dünya Kupası", "Copa Italia"],
+    "yol":"assets/totti.jpeg"
   },
   {
     "id": 12,
@@ -117,7 +128,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Manchester City"],
     "oynadigi_ligler": ["Premier Lig"],
-    "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "FA Cup", "UEFA Süper Kupa"]
+    "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "FA Cup", "UEFA Süper Kupa"],
+    "yol": "assets/foden.webp"
   },  
   {
     "id": 14,
@@ -127,7 +139,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Bayern Münih", "Juventus"],
     "oynadigi_ligler": ["Bundesliga", "Serie A"],
-    "kazandigi_kupalar": [""]
+    "kazandigi_kupalar": [""],
+    "yol":"assets/kenan-yildiz.png"
   },  
   {
     "id": 15,
@@ -137,7 +150,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Birmingham", "Borussia Dortmund", "Real Madrid"],
     "oynadigi_ligler": ["Championship", "Bundesliga", "La Liga"],
-    "kazandigi_kupalar": ["La Liga", "Şampiyonlar Ligi","UEFA Süper Kupa"]
+    "kazandigi_kupalar": ["La Liga", "Şampiyonlar Ligi","UEFA Süper Kupa"],
+    "yol": "assets/jude-bellingham.webp"
   },
   {
     "id": 16,
@@ -147,7 +161,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Cagliari", "İnter"],
     "oynadigi_ligler": ["Serie A"],
-    "kazandigi_kupalar": ["Serie A", "Avrupa Şampiyonası"]
+    "kazandigi_kupalar": ["Serie A", "Avrupa Şampiyonası"],
+    "yol": "assets/nicolo-barella.webp"
   },  
   {
     "id": 18,
@@ -157,7 +172,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Molde", "Red Bull Salzburg", "Borussia Dortmund", "Manchester City"],
     "oynadigi_ligler": ["Eliteserien", "Bundesliga", "Premier Lig"],
-    "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "UEFA Süper Kupa"]
+    "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "UEFA Süper Kupa"],
+    "yol": "assets/haaland.webp"
   },
     {
     "id": 24,
@@ -167,7 +183,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Lech Poznan", "Borussia Dortmund", "Bayern Münih", "Barcelona"],
     "oynadigi_ligler": ["Ekstraklasa", "Bundesliga", "La Liga"],
-    "kazandigi_kupalar": ["Bundesliga", "Şampiyonlar Ligi", "La Liga", "UEFA Süper Kupa", "Polonya Kupası"]
+    "kazandigi_kupalar": ["Bundesliga", "Şampiyonlar Ligi", "La Liga", "UEFA Süper Kupa", "Polonya Kupası"],
+    "yol": "assets/lewandowski.webp"
   },
   {
     "id": 26,
@@ -177,7 +194,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["West Ham United", "Arsenal"],
     "oynadigi_ligler": ["Premier Lig"],
-    "kazandigi_kupalar": ["Konferans Ligi"]
+    "kazandigi_kupalar": ["Konferans Ligi"],
+    "yol": "assets/declan-rice.webp"
   },
   {
     "id": 31,
@@ -187,7 +205,8 @@
     "durum": "Emekli",
     "oynadigi_takimlar": ["West Ham United", "Chelsea", "Manchester City", "New York City"],
     "oynadigi_ligler": ["Premier Lig", "MLS"],
-    "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "FA Cup", "UEFA Avrupa Ligi"]
+    "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "FA Cup", "UEFA Avrupa Ligi"],
+    "yol":"assets/lampard.png"
   },
   {
     "id": 33,
@@ -197,7 +216,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Villarreal", "Atletico Madrid", "Manchester City"],
     "oynadigi_ligler": ["Segunda División", "La Liga", "Premier Lig"],
-    "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "Avrupa Şampiyonası", "Ballon dor", "UEFA Süper Kupa"]
+    "kazandigi_kupalar": ["Premier Lig", "Şampiyonlar Ligi", "Avrupa Şampiyonası", "Ballon dor", "UEFA Süper Kupa"],
+    "yol": "assets/rodri.webp"
   },
   {
     "id": 38,
@@ -207,7 +227,8 @@
     "durum": "Emekli",
     "oynadigi_takimlar": ["Hansa Rostock", "Bayern Münih", "Real Madrid"],
     "oynadigi_ligler": ["2. Bundesliga", "Bundesliga", "La Liga"],
-    "kazandigi_kupalar": ["Bundesliga", "La Liga", "Şampiyonlar Ligi", "Dünya Kupası", "UEFA Süper Kupa"]
+    "kazandigi_kupalar": ["Bundesliga", "La Liga", "Şampiyonlar Ligi", "Dünya Kupası", "UEFA Süper Kupa"],
+    "yol":"assets/toni-kross.png"
   },
   {
     "id": 52,
@@ -217,7 +238,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Wolfsburg", "Charleroi", "Lille", "Napoli", "Galatasaray"],
     "oynadigi_ligler": ["Bundesliga", "Pro League", "Ligue 1", "Serie A", "Süper Lig"],
-    "kazandigi_kupalar": ["Serie A", "Süper Lig"]
+    "kazandigi_kupalar": ["Serie A", "Süper Lig"],
+    "yol":"assets/osimhen.png"
   },
   {
     "id": 56,
@@ -227,7 +249,8 @@
     "durum": "Emekli",
     "oynadigi_takimlar": ["Ajax", "Real Madrid", "İnter", "Galatasaray", "Nice", "Al-Gharafa"],
     "oynadigi_ligler": ["Eredivisie", "La Liga", "Serie A", "Süper Lig", "Ligue 1", "Qatar Stars League"],
-    "kazandigi_kupalar": ["Eredivisie", "La Liga", "Serie A", "Şampiyonlar Ligi", "Süper Lig"]
+    "kazandigi_kupalar": ["Eredivisie", "La Liga", "Serie A", "Şampiyonlar Ligi", "Süper Lig"],
+    "yol": "assets/sneijder.jpeg"
   },
   {
     "id": 68,
@@ -237,7 +260,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Schalke", "Manchester City", "Bayern Münih", "Galatasaray"],
     "oynadigi_ligler": ["Bundesliga", "Premier Lig", "Süper Lig"],
-    "kazandigi_kupalar": ["Premier Lig", "Bundesliga", "Şampiyonlar Ligi", "UEFA Süper Kupa"]
+    "kazandigi_kupalar": ["Premier Lig", "Bundesliga", "Şampiyonlar Ligi", "UEFA Süper Kupa"],
+    "yol":"assets/sane.png"
   },
   {
     "id": 80,
@@ -247,7 +271,9 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Real Madrid", "Borussia Dortmund", "İnter", "Paris Saint-Germain"],
     "oynadigi_ligler": ["La Liga", "Bundesliga", "Serie A", "Ligue 1"],
-    "kazandigi_kupalar": ["La Liga", "Serie A", "Ligue 1", "Şampiyonlar Ligi", "UEFA Süper Kupa"]
+    "kazandigi_kupalar": ["La Liga", "Serie A", "Ligue 1", "Şampiyonlar Ligi", "UEFA Süper Kupa"],
+    "yol":"assets/hakimi.png"
+
   },
   {
     "id": 77,
@@ -257,7 +283,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Genk", "Chelsea", "Atletico Madrid", "Real Madrid"],
     "oynadigi_ligler": ["Pro League", "Premier Lig", "La Liga"],
-    "kazandigi_kupalar": ["Premier Lig", "La Liga", "Şampiyonlar Ligi", "UEFA Süper Kupa", "UEFA Avrupa Ligi"]
+    "kazandigi_kupalar": ["Premier Lig", "La Liga", "Şampiyonlar Ligi", "UEFA Süper Kupa", "UEFA Avrupa Ligi"],
+    "yol": "assets/thibaut-courtois.webp"
   },
   {
     "id": 78,
@@ -267,7 +294,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Sampdoria", "İnter Miami", "Paris Saint-Germain", "Galatasaray"],
     "oynadigi_ligler":   ["Serie B", "MLS", "Süper Lig", "Ligue 1"], 
-    "kazandigi_kupalar": ["Süper Lig", "Ligue 1"]
+    "kazandigi_kupalar": ["Süper Lig", "Ligue 1"],
+    "yol":"assets/hakimi.png"
   },
   {
     "id": 79,
@@ -277,7 +305,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Barcelona", "Paris Saint-Germain", "İnter Miami"],
     "oynadigi_ligler":   ["La Liga", "Ligue 1", "MLS"], 
-    "kazandigi_kupalar": ["La Liga", "Ligue 1", "Şampiyonlar Ligi", "Copa America", "Dünya Kupası", "Ballon dor", "UEFA Süper Kupa"]
+    "kazandigi_kupalar": ["La Liga", "Ligue 1", "Şampiyonlar Ligi", "Copa America", "Dünya Kupası", "Ballon dor", "UEFA Süper Kupa"],
+    "yol": "assets/messi.webp"
   },
   {
     "id": 80,
@@ -287,7 +316,8 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Sporting", "Manchester United", "Real Madrid", "Juventus", "Al Nassr"],
     "oynadigi_ligler":   ["La Liga", "Premier Lig", "Serie A", "Suudi Arabistan", "Portekiz Ligi"], 
-    "kazandigi_kupalar": ["Premier Lig", "La Liga", "Serie A", "Şampiyonlar Ligi", "Avrupa Şampiyonası", "Ballon dor", "UEFA Süper Kupa"]
+    "kazandigi_kupalar": ["Premier Lig", "La Liga", "Serie A", "Şampiyonlar Ligi", "Avrupa Şampiyonası", "Ballon dor", "UEFA Süper Kupa"],
+    "yol":"assets/ronaldo.png"
   },
   {
     "id": 60,
@@ -297,6 +327,7 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Basel", "Borussia Mönchengladbach", "Bayern Münih", "İnter"],
     "oynadigi_ligler": ["Super League", "Bundesliga", "Serie A"],
-    "kazandigi_kupalar": ["Bundesliga", "Serie A"]
+    "kazandigi_kupalar": ["Bundesliga", "Serie A"],
+    "yol": "assets/sommer.webp"
   }
 ]
