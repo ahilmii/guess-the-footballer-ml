@@ -12,6 +12,7 @@ const chats       = document.getElementById("chats");
 const userStatus  = document.getElementById("status");
 const futbolcuIsimAlani = document.getElementById("futbolcu-isim-alani");
 
+let foto = document.getElementById("foto")
 
 //şŞablon soruları ve veri anahtarlarını oluşturma
 // Bu yapı, hangi sorunun hangi veriyi kontrol edeceğini belirliyruz
@@ -238,6 +239,7 @@ bilgiSablonlari = [
     { anahtar: 'mevki:orta saha', sablon_soru: 'orta sahada mı oynuyorsun'},
     { anahtar: 'mevki:forvet', sablon_soru: 'forvette mi oynuyorsun'},
 ];
+console.log(bilgiSablonlari.length)
 
 // ekleyebileceğim sorular: 5 büyük lig de oynadı mı?
 // ingilterede en iyi 6 da oynadı mı?
@@ -316,6 +318,9 @@ async function oyunKur() {
 
 oyunKur();
 
+function fotoEkle(adres) {
+  foto.src = adres;
+}
 
 function scrollToBottom() {
     chats.scrollTop = chats.scrollHeight; // scrollTop: Bir elementin dikey kaydırma çubuğunun en üstten ne kadar aşağıda olduğunu belirtir. bunu chat ekranın yüksekliğine eşitliyoruz.
@@ -373,6 +378,7 @@ async function soruyuAnalizEt(kullaniciSorusu) {
         cevapVer(`Tebrikler, doğru bildin! ben ${secilenFutbolcu.isim.toLowerCase()}! ${sorulanSoruSayisi} soruda bildin! 
         ismini ve skorunu liderlik tablosuna eklemek ister misin?`);
 
+        fotoEkle(secilenFutbolcu.yol);
         futbolcuIsimAlani.innerText = `${secilenFutbolcu.isim}`;
         setTimeout(() => {
           liderlikTablosunaEkle(sorulanSoruSayisi);
@@ -528,6 +534,7 @@ async function soruSor() {
 
       // setInterval asenkron bir yapıya sahiptir ve belirli aralıklarla bir işlem yapar. Bu sırada diğer işlemler de çalışmaya devam eder.
 
+      fotoEkle(secilenFutbolcu.yol);
       futbolcuIsimAlani.innerText = `${secilenFutbolcu.isim}`;
       cevapVer(`ben ${secilenFutbolcu.isim.toLowerCase()}! Daha çok pratik yapmalısın.!`)
       sorulanSoruSayisi = 0;
@@ -601,6 +608,7 @@ function oyunBitir() {
     chats.removeChild(chats.firstChild);
   }
 
+  foto.src = "question-mark.jpg";
   oyunKur(); // kullanıcı doğru bildi, oyun bitti mesajlar silindi. yeni oyun tekrar başlayaccak, yeni bir futbolcu seçilecek. 
 
 }
@@ -673,6 +681,7 @@ function modalGoster(skor) {
         console.log(skorListesi)
 
         modalKapat();
+        foto.src = "question-mark.jpg";
         oyunBitir(); 
     });
     modal.appendChild(gonderButon);
