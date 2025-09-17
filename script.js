@@ -6,7 +6,10 @@ let secilenFutbolcu;
 let bilgiSablonlari;
 let sablonVektorleri; // şablon soruların hesaplanmış vektörlerini burada tutacağız. böylece her fonksiyondan erişebileceğiz ve her seferiende hesaplamak zorunda kalmayacağız.
 let sorulanSoruSayisi = 0;
-
+let kullanciBildiMi = false; 
+// bu değişkeni ekleme sebebim şu: sorulanSoruSayisi 5'in katı olduğunda pes devam butonalrı geliyor, ancak aynı zmanda (5'in katı olduğunda) kullanıcı doğru cevabı bildiyse
+// pes devam butonları yine geliyor. gelmemesi lazıım çünkü kullanıcı soruyu bildi. nasıl çalışıyor: liderlik.TablosunaEkle fonc içinde bu değişkeni true yaptım. 
+// ayrıca pesButonu oluşturduğumuz yerde kullanciBildiMi == false kontorlü yaptım.
 let   skorListesi = [];  
 const chats       = document.getElementById("chats");
 const userStatus  = document.getElementById("status");
@@ -380,6 +383,7 @@ async function soruyuAnalizEt(kullaniciSorusu) {
 
         fotoEkle(secilenFutbolcu.yol);
         futbolcuIsimAlani.innerText = `${secilenFutbolcu.isim}`;
+        kullanciBildiMi = true;
         setTimeout(() => {
           liderlikTablosunaEkle(sorulanSoruSayisi);
         }, 0);
@@ -493,7 +497,7 @@ async function soruSor() {
 
 
 
-  if (sorulanSoruSayisi > 0 && sorulanSoruSayisi % 5 == 0) {
+  if (sorulanSoruSayisi > 0 && sorulanSoruSayisi % 5 == 0 && kullanciBildiMi == false) { // eğer kullanıcı soruyu bilmediyse pes devvam butonlarını oluşturuyorum.
     let pesMesaji = document.createElement('div');
     let sonucMesaji = document.createElement('div');
     let kalanSure = document.createElement("div");
