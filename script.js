@@ -17,8 +17,8 @@ const futbolcuIsimAlani = document.getElementById("futbolcu-isim-alani");
 
 let foto = document.getElementById("foto")
 
-//şŞablon soruları ve veri anahtarlarını oluşturma
-// Bu yapı, hangi sorunun hangi veriyi kontrol edeceğini belirliyruz
+//şablon soruları ve veri anahtarlarını oluşturma
+// bu yapıyla, hangi sorunun hangi veriyi kontrol edeceğini belirliyruz
 bilgiSablonlari = [
     { anahtar: 'milliyet:Türk', sablon_soru: 'Türk müsün' },
     { anahtar: 'milliyet:Arjantin', sablon_soru: 'Arjantinli misin' },
@@ -182,6 +182,7 @@ bilgiSablonlari = [
     { anahtar: 'isim:Achraf Hakimi', sablon_soru: 'Sen Achraf Hakimi misin' }, 
     { anahtar: 'isim:Thibaut Courtois', sablon_soru: 'Sen Thibaut Courtois mısın' }, 
     { anahtar: 'isim:Yann Sommer', sablon_soru: 'Sen Yann Sommer misin' }, 
+    { anahtar: 'isim:Didier Drogba', sablon_soru: 'Sen Didier Drogba mısın' }, 
 
 
     { anahtar: 'kupa:Şampiyonlar Ligi', sablon_soru: 'Şampiyonlar Ligi kazandın mı' },
@@ -242,10 +243,6 @@ bilgiSablonlari = [
     { anahtar: 'mevki:orta saha', sablon_soru: 'orta sahada mı oynuyorsun'},
     { anahtar: 'mevki:forvet', sablon_soru: 'forvette mi oynuyorsun'},
 ];
-console.log(bilgiSablonlari.length)
-
-// ekleyebileceğim sorular: 5 büyük lig de oynadı mı?
-// ingilterede en iyi 6 da oynadı mı?
 
 async function fetchData() {
   try {
@@ -278,14 +275,10 @@ async function oyunKur() {
   try {
     
     cevapVer("Bir dakika bekle, hazırlanmam lazım!");
-    console.log("Model yüklemesi başlatılıyor...");
     model = await pipeline('feature-extraction', 'Xenova/all-MiniLM-L6-v2', {quantized: true}) 
 
 
-    console.log("Model başarıyla yüklendi!");
-
     // Şablon Soruların Vektörlerini HESAPLA ve SAKLA
-    console.log("Bilgi şablonlarının vektörleri hesaplanıyor...");
     let sablonCumleleri = bilgiSablonlari.map(s => s.sablon_soru.toLowerCase()); // toLowerCase() orijinal stringi değiştirmez, sadece yeni bir string döndürür.
 
     const ciktilar = await model(sablonCumleleri, {pooling: 'mean', normalize: false})
@@ -294,7 +287,6 @@ async function oyunKur() {
     const dimensions = ciktilar.dims;
     sablonVektorleri = tf.tensor(rawData, dimensions);    
     
-    console.log("Şablon vektörleri hafızaya alındı.");
     futbolcuIsimAlani.innerText = "Guess who I am";
     userStatus.innerText = "online"; 
 
@@ -303,13 +295,12 @@ async function oyunKur() {
     }
 
 
-    cevapVer("Hey! Benim kim olduğumu bulabilir misin?");
+    cevapVer("Tamam, ben hazırım. Bakalım benim kim olduğumu bulabilecek misin?");
 
 
     // rastgele bir futbolcu seçiyoruz
     const rastgeleIndex = Math.floor(Math.random() * FUTBOLCU_LISTE.length);
     secilenFutbolcu     = FUTBOLCU_LISTE[rastgeleIndex];
-    console.log(`Bilgisayarın tuttuğu futbolcu: ${secilenFutbolcu.isim}`); 
 
   } catch (error) {
     console.error("Model yüklenirken bir hata oluştu:", error);
@@ -353,23 +344,19 @@ async function soruyuAnalizEt(kullaniciSorusu) {
   const enYuksekSkorIndex = benzerlikSkorlari.argMax(1);
 
   const skor = enYuksekSkorTensor.dataSync()[0]; // en yüksek skorun tensör değerini al
-  const index = enYuksekSkorIndex.dataSync()[0]; // Index'i bir sayı olarak almak için
+  const index = enYuksekSkorIndex.dataSync()[0]; 
 
   const ESIK_DEGERİ = 0.82; 
-  console.log("skor" + skor)
-  console.log("index " + index);
 
 
 
   if (skor < ESIK_DEGERİ) {
     cevapVer("Üzgünüm, bu soruyu anlayamadım veya bu konuda bir bilgim yok.")
-    console.log("Üzgünüm, bu soruyu anlayamadım veya bu konuda bir bilgim yok.");
     return; 
   }
 
 
   const eslesenSablon = bilgiSablonlari[index];
-  console.log(eslesenSablon["anahtar"])
 
   const sablonAnahtar      = eslesenSablon["anahtar"];
   const [veriTipi, deger]  = sablonAnahtar.split(":"); // : ile içeriği böldük, split iki elemanli bir dizi döndürür, ilki veriTipi'ne atanır, ikincisi deger'e atanır. 
@@ -388,40 +375,32 @@ async function soruyuAnalizEt(kullaniciSorusu) {
           liderlikTablosunaEkle(sorulanSoruSayisi);
         }, 0);
 
-        console.log("oyun bitti");
       } else {
         cevapVer(`Hayır, ben ${deger.toLowerCase()} değilim, tekrar denemelisin :) `)
-        console.log("hayır");
       }
       break;
 
     case "milliyet":
       if (secilenFutbolcu.milliyet.toLowerCase() == deger.toLowerCase()) {
         cevapVer("evet");
-        console.log("evet");
       } else {
         cevapVer("hayır");
-        console.log("hayır");
       }
       break;    
 
     case "durum":
       if (secilenFutbolcu.durum.toLowerCase() == deger.toLowerCase()) {
         cevapVer("Evet, aktif futbol hayatıma devam ediyorum.")
-        console.log("Evet, aktif futbol hayatına devam ediyor.");
       } else {
         cevapVer("Hayır, artık aktif olarak oynamıyorum.")
-        console.log("Hayır, artık aktif olarak oynamıyor.");
       }
       break;    
 
     case "mevki":
       if (secilenFutbolcu.mevki.toLowerCase() == deger.toLowerCase()) {
         cevapVer("evvet");
-        console.log("evet");
       } else {
         cevapVer("hayır");
-        console.log("hayır");
       }
       break;  
       
@@ -430,10 +409,8 @@ async function soruyuAnalizEt(kullaniciSorusu) {
         const kucukHarfTakimlar = secilenFutbolcu.oynadigi_takimlar.map(takim => takim.toLowerCase());
         if (kucukHarfTakimlar.includes(deger.toLowerCase())) {
           cevapVer(`evet, ${deger.toLowerCase()} takımında oynadım`);
-          console.log("evet");
         } else {
           cevapVer(`hayır, ${deger.toLowerCase()} takımında oynamadım`);
-          console.log("hayır");
         }
       break;
 
@@ -442,10 +419,8 @@ async function soruyuAnalizEt(kullaniciSorusu) {
         const kucukHarfKupalar = secilenFutbolcu.kazandigi_kupalar.map(kupa => kupa.toLowerCase());
         if (kucukHarfKupalar.includes(deger.toLowerCase())) {
           cevapVer("evet");
-          console.log("evet");
         } else {
           cevapVer("hayır")
-          console.log("hayır");
         }
       break;
 
@@ -454,10 +429,8 @@ async function soruyuAnalizEt(kullaniciSorusu) {
         const kucukHarfLigler = secilenFutbolcu.oynadigi_ligler.map(kupa => kupa.toLowerCase());
         if (kucukHarfLigler.includes(deger.toLowerCase())) {
           cevapVer(`evet ${deger.toLowerCase()} liginde oynadım`);
-          console.log("evet");
         } else {
           cevapVer(`hayır, ${deger.toLowerCase()} liginde oynamadım.`)
-          console.log("hayır");
         }
       break;
 
@@ -569,7 +542,6 @@ async function soruSor() {
   }
 
   soruInput.value = ''; // soruInput.innerText yazmıştım, ancak input için .innerText değil .value kullanılır
-  console.log("soru sayısı" + sorulanSoruSayisi)
 
   /* 
   bu fonksiyonu ilk kullandığımda şöyle bir hata yapmıştım:
@@ -612,6 +584,7 @@ function oyunBitir() {
     chats.removeChild(chats.firstChild);
   }
 
+  kullanciBildiMi = false; // yeni oyun başladığında tekrar bunu false ypamlıyız eğer yapmazsak yeni oyunda pes-devam butonları gelmiyor
   foto.src = "question-mark.jpg";
   oyunKur(); // kullanıcı doğru bildi, oyun bitti mesajlar silindi. yeni oyun tekrar başlayaccak, yeni bir futbolcu seçilecek. 
 
@@ -668,7 +641,6 @@ function modalGoster(skor) {
 
     const gonderButon = butonOlustur("GÖNDER", "#77b3d4", () => {
         const kullaniciAdi = document.getElementById('kullanici-adi-input').value;
-        console.log(`Liderlik tablosuna eklenecek isim: ${kullaniciAdi} ve sorduğu soru sayısı ${skor}`);
         
         skorListesi.push({username: `${kullaniciAdi}`, score: `${skor}`});
         skorListesi.sort((a, b) => a.score - b.score);
@@ -682,9 +654,8 @@ function modalGoster(skor) {
           tbody.appendChild(row);
         });
 
-        console.log(skorListesi)
-
         modalKapat();
+        kullanciBildiMi = false;
         foto.src = "question-mark.jpg";
         oyunBitir(); 
     });
