@@ -29,7 +29,7 @@
     "durum": "Aktif",
     "oynadigi_takimlar": ["Chelsea", "Werder Bremen", "Wolfsburg", "Manchester City", "Napoli"],
     "oynadigi_ligler": ["Premier Lig", "Bundesliga", "Serie A"],
-    "kazandigi_kupalar": ["Premier Lig", "FA Cup", "Şampiyonlar Ligi"],
+    "kazandigi_kupalar": ["Premier Lig", "FA Cup", "Şampiyonlar Ligi", "Serie A"],
     "yol":"assets/kevin-de-bruyne.png"
   },
   {
@@ -256,7 +256,7 @@
     "id": 68,
     "isim": "Leroy Sane",
     "milliyet": "Alman",
-    "mevki": "Kanat",
+    "mevki": "Forvet",
     "durum": "Aktif",
     "oynadigi_takimlar": ["Schalke", "Manchester City", "Bayern Münih", "Galatasaray"],
     "oynadigi_ligler": ["Bundesliga", "Premier Lig", "Süper Lig"],
